@@ -20,34 +20,6 @@
 <body>
 	<div class="container">
 		<div class="head"><?php echo $head; ?></div>
-		<?php if ($class != 'admin'): ?>
-			<div id="menu">
-				<ul class="nav nav-tabs nav-justified" role="tablist">
-	 			<li><a href="\">Home</a></li>
-				<li class="dropdown items-categories">
-				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				     Categories <span class="caret"></span>
-				    </a>
-	   				 <ul class="dropdown-menu" role="menu">
-				      	 <li><a href="/categories/onhand">Onhand Items</a></li>
-						 <li><a href="/categories/soap">Soaps</a></li>
-						 <li><a href="/categories/gadgets">Gadgets</a></li>
-						 <li><a href="/categories/bags">Bags</a></li>
-						 <li><a href="/categories/dress">Dresses</a></li>
-						 <li><a href="/categories/skirts">Shorts&Skirts</a></li>
-						 <li><a href="/categories/pants">Pants</a></li>
-						 <li><a href="/categories/tops">Tops/Loose Tops</a></li>
-						 <li><a href="/categories/pullovers">Longsleeves</a></li>
-						 <li><a href="/categories/jackets">Cardigans</a></li>
-						 <li><a href="/categories/jumpshorts">Jumpsuits</a></li>
-				    </ul>
-				</li>
-				<li><a href="\order">Order Form</a></li>
-				<li><a href="\customer">Feedbacks</a></li>
-				<li><a href="\about">About Us</a></li>
-				</ul>
-			</div>
-		<?php endif;?>
 		<div class="body"><?php echo $body; ?></div>
 		<div class="foot"><?php echo $foot; ?></div>
     </div>
