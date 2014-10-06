@@ -1,0 +1,11 @@
+user:
+	mode of payment logos
+	display transactions
+	display bogus buyers
+	checkout
+admin:
+	add transactions
+	add bogus buyers
+	edit items transactions bogus buyers
+	view inventory
+	alert after submit
