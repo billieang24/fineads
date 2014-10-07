@@ -24,6 +24,11 @@ class Front_Page_Index extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
+		$this->_body = array(
+			'test' => $_POST);
+		if (isset($_POST['name'])) {
+			front()->messages()->create($_POST['name'],$_POST['email'],$_POST['content']);
+		}
 		return $this->_page();
 	}
 	

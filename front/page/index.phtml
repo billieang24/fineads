@@ -27,53 +27,134 @@
 		<div class="slide"><img src="images/galleryImage/b2.jpg" class="body-div" style"width:100%;"/></div>
 	</div>
 	<div class="section" data-anchor="inquiry">
-			<div class="col-xs-6 col-sm-2">
+			<div class="col-xs-6 col-sm-2 tarp">
 				<h4>Tarp</h4>
 				<h6>Php 10.00/sq.-ft</br>
 					additional Php 100.00 up/sq.-ft Depending on layout
 				</h6>
-				Height:<input type="number" name="tarp-height" class="form-control"/>
-				Width:<input type="number" name="tarp-width"class="form-control"/>
+				Height:<input type="number" min="1" name="height" class="form-control"/>
+				Width:<input type="number" min="1" name="width"class="form-control"/>
+				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				<div class="estimate"></div>
 			</div>
-			<div class="col-xs-6 col-sm-3">
+			<div class="col-xs-6 col-sm-3 signboard">
 				<h4>Signboard Sticker with angle bar frame</h4>
 				<h6>Php 100.00/sq.-ft + installation</h6>
-				Height:<input type="number" name="signb-height" class="form-control"/>
-				Width:<input type="number" name="signb-width"class="form-control"/>
+				Height:<input type="number" min="1" name="height" class="form-control"/>
+				Width:<input type="number" min="1" name="width"class="form-control"/>
+				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				<div class="estimate"></div>
 			</div>
-			<div class="col-xs-6 col-sm-3">
+			<div class="col-xs-6 col-sm-3 mural">
 				<h4>Mural Sintra Board Sticker</h4>
 				<h6>Php 100.00/sq-ft up + installation</h6>
-				Height:<input type="number" name="tarp-height" class="form-control"/>
-				Width:<input type="number" name="tarp-width"class="form-control"/>
+				Height:<input type="number" min="1" name="height" class="form-control"/>
+				Width:<input type="number" min="1" name="width"class="form-control"/>
+				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				<div class="estimate"></div>
 			</div>
-			<div class="col-xs-6 col-sm-3">
+			<div class="col-xs-6 col-sm-3 sticker">
 				<h4>Sticker</h4>
 				<h6>Php 85.00/sq-ft</br>
 					Php 400.00/sq-ft panaflex Single Face</br>
 					Php 750.00/sq-ft panaflex Double Face</br>
 				</h6>
-				Height:<input type="number" name="signb-height" class="form-control"/>
-				Width:<input type="number" name="signb-width"class="form-control"/></br>
+				Height:<input type="number" min="1" name="height" class="form-control"/>
+				Width:<input type="number" min="1" name="width"class="form-control"/></br>
 				<select class="form-control">
-					<option>Single Face</option>
-					<option>Double Face</option>
+					<option value="ordinary">Ordinary</option>
+					<option value="single">Single Face</option>
+					<option value="double">Double Face</option>
 				</select>
+				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				<div class="estimate"></div>
 			</div>
-			<div class="col-xs-6 col-sm-1">
+			<div class="col-xs-6 col-sm-1 tshirt">
 				<h4>T-shirt</h4>
-				Quantity:<input type="number" name="signb-height" class="form-control"/>
+				Quantity:<input type="number" min="1" name="quantity" class="form-control"/>
+				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				<div class="estimate"></div>
 			</div>
 	</div>
 	<div class="section" data-anchor="about" style="background-color:blue;">
+		<?php print_r($test);?>
+		<form method="POST">
+			<input type="text" name="name" required/>
+			<input type="email" name="email" required/>
+			<textarea name="content" rows="20" cols="20" style="font-size: 10pt; font-family: Arial;"></textarea>
+			<button type="submit">Submit</button>
+		</form>
 	</div>
 	<div class="section" data-anchor="contact" style="background-color:yellow;">
 	</div>
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {
-	    $('#fullpage').fullpage({
-		    menu: '#menu'
+	    $("#fullpage").fullpage({
+		    menu: "#menu"
 		});
 	});
+	jQuery(function($) {
+		$(".compute").on("click", function() {
+			var height = $(this).parent().children("input[name='height']").val();
+			var width = $(this).parent().children("input[name='width']").val();
+			var quantity = $(this).parent().children("input[name='quantity']").val();
+			var values = [height, width, quantity]
+			for( val in values) {
+				if (values[val] == "" || parseInt(values[val]) < 1) {
+					$(this).parent().children(".estimate").html("Please fill up all the fields above with a valid positive number without commas");
+					return;
+				}
+			}
+			if ($(this).parent().hasClass("tarp")) {
+				$(this).parent().children(".estimate").html("Estimated amount: Php " + number_format((height * width * 10),2,".",","));
+			}
+			else if ($(this).parent().hasClass("sticker")) {
+				if ($(this).parent().children("select").val() == "ordinary") {
+					$(this).parent().children(".estimate").html("Estimated amount: Php " + number_format((height * width * 85),2,".",","));
+				}
+				else if ($(this).parent().children("select").val() == "single") {
+					$(this).parent().children(".estimate").html("Estimated amount: Php " + number_format((height * width * 400),2,".",","));
+				}
+				else {
+					$(this).parent().children(".estimate").html("Estimated amount: Php " + number_format((height * width * 750),2,".",","));
+				}
+			}
+			else if ($(this).parent().hasClass("tshirt")) {
+				$(this).parent().children(".estimate").html("Estimated amount: Php " + number_format((quantity * 100),2,".",","));
+			}
+			else {
+				$(this).parent().children(".estimate").html("Estimated amount: Php " + number_format((height * width * 100),2,".",","));
+			}
+		});
+		$("input[type='number']").on("mousewheel", function(evt){ evt.preventDefault(); });
+		$("input[type='number']").on("keydown", function(evt){ evt.preventDefault(); });
+	});
+	function number_format(number, decimals, dec_point, thousands_sep) {
+		  number = (number + '')
+		    .replace(/[^0-9+\-Ee.]/g, '');
+		  var n = !isFinite(+number) ? 0 : +number,
+		    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+		    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+		    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+		    s = '',
+		    toFixedFix = function(n, prec) {
+		      var k = Math.pow(10, prec);
+		      return '' + (Math.round(n * k) / k)
+		        .toFixed(prec);
+		    };
+		  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+		  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n))
+		    .split('.');
+		  if (s[0].length > 3) {
+		    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+		  }
+		  if ((s[1] || '')
+		    .length < prec) {
+		    s[1] = s[1] || '';
+		    s[1] += new Array(prec - s[1].length + 1)
+		      .join('0');
+		  }
+		  return s.join(dec);
+		}
 </script>
