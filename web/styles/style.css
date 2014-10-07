@@ -1,20 +1,18 @@
 @font-face{
-	src: "/bootstrap/fonts/CooperBlackStd.otf";
+	src: "styles/bootstrap/fonts/CooperBlackStd.otf";
 	font-family: cooper;
 }
 .nav-fixed{
 	position: fixed !important; 
 	background-color: black;
 	opacity: 0.8;
-	padding: 10px 0; 
-	width: 100%
+	padding: 10px 0;
+	z-index:70;
 }
-.nav-inner{
-	width: 95%;
-}
-.nav-inner a{
+.nav-fixed li a{
 	color: #fff;
-	font-family: cooper;
+	font-family:monospace;
+	font-size: 16px;
 }
 .logo{
 	height: 30px;
@@ -22,7 +20,7 @@
 	width: 100px;
 }
 .navbar-form{
-	padding: 0px 10px;
+	padding: 0px 5px;
 }
 .body-div{
 	height:700px;

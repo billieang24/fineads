@@ -1,14 +1,11 @@
-<!--  
-  -->
-<ul id="menu" class="nav nav­pills nav-justified" style="position:fixed; z-index:70">
+<ul id="menu" class="nav nav­pills nav-justified nav-fixed">
 	<li data-menuanchor="home" class="active"><a href="#home"><img class="logo" src="images\logobnw1.png"/></a></li>
     <li data-menuanchor="portfolio"><a href="#portfolio">Portfolio</a></li>
     <li data-menuanchor="inquiry"><a href="#inquiry">Inquiry</a></li>
     <li data-menuanchor="about"><a href="#about">About</a></li>
     <li data-menuanchor="contact"><a href="#contact">Contact Us</a></li>
-	<li>
-	<form method="post">
-		<li class="navbar-form">
+	<li class="navbar-form">
+			<form method="post">
 			<input type="text" class="form-control"name="username" placeholder="username" required/>
 		</li>
 		<li class="navbar-form">
@@ -17,7 +14,6 @@
 			<button type="submit" class="btn btn-sm btn-default">Log in</button>
 		</li>
 	</form>
-	</li>
 </ul>
 <div id="fullpage">
 	<div class="section" data-anchor="home" style="background-color:cyan;">
@@ -28,9 +24,46 @@
 		<div class="slide"><img src="images/galleryImage/a2.jpg" class="body-div" style="width:100%;"/></div>
 		<div class="slide"><img src="images/galleryImage/a3.jpg" class="body-div" style="width:100%;"/></div>
 		<div class="slide"><img src="images/galleryImage/b1.jpg" class="body-div" style="width:100%;"/></div>
-		<div class="slide"><img src="images/galleryImage/b2.jpg" class="body-div" style="width:100%;"/></div>
+		<div class="slide"><img src="images/galleryImage/b2.jpg" class="body-div" style"width:100%;"/></div>
 	</div>
-	<div class="section" data-anchor="inquiry" style="background-color:green;">
+	<div class="section" data-anchor="inquiry">
+			<div class="col-xs-6 col-sm-2">
+				<h4>Tarp</h4>
+				<h6>Php 10.00/sq.-ft</br>
+					additional Php 100.00 up/sq.-ft Depending on layout
+				</h6>
+				Height:<input type="number" name="tarp-height" class="form-control"/>
+				Width:<input type="number" name="tarp-width"class="form-control"/>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<h4>Signboard Sticker with angle bar frame</h4>
+				<h6>Php 100.00/sq.-ft + installation</h6>
+				Height:<input type="number" name="signb-height" class="form-control"/>
+				Width:<input type="number" name="signb-width"class="form-control"/>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<h4>Mural Sintra Board Sticker</h4>
+				<h6>Php 100.00/sq-ft up + installation</h6>
+				Height:<input type="number" name="tarp-height" class="form-control"/>
+				Width:<input type="number" name="tarp-width"class="form-control"/>
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<h4>Sticker</h4>
+				<h6>Php 85.00/sq-ft</br>
+					Php 400.00/sq-ft panaflex Single Face</br>
+					Php 750.00/sq-ft panaflex Double Face</br>
+				</h6>
+				Height:<input type="number" name="signb-height" class="form-control"/>
+				Width:<input type="number" name="signb-width"class="form-control"/></br>
+				<select class="form-control">
+					<option>Single Face</option>
+					<option>Double Face</option>
+				</select>
+			</div>
+			<div class="col-xs-6 col-sm-1">
+				<h4>T-shirt</h4>
+				Quantity:<input type="number" name="signb-height" class="form-control"/>
+			</div>
 	</div>
 	<div class="section" data-anchor="about" style="background-color:blue;">
 	</div>
