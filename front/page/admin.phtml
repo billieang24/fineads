@@ -1,0 +1,69 @@
+<div style="position:fixed;z-index:70;height:100%;width:20%;background-color:black;">
+<h1>ADMIN</h1>
+<a href="?logout=1">LOG OUT</a>
+<ul>
+	<liname="0">List
+		<ul>
+			<li name="1">
+				Branch
+				<ul>
+					<li name="3">
+						Project
+					</li>
+					<li>
+						Project
+					</li>
+					<li>
+						Project
+					</li>
+				</ul>
+			</li>
+			<li name="2">
+				Branch
+				<ul>
+					<li>
+						Project
+					</li>
+					<li>
+						Project
+					</li>
+					<li>
+						Project
+					</li>
+				</ul>
+			</li>
+			<li>
+				Branch
+				<ul>
+					<li>
+						Project
+					</li>
+					<li>
+						Project
+					</li>
+					<li>
+						Project
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+Messages
+<div style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
+Request Notification
+</div>
+Add Project
+</div>
+<div class="section" data-anchor="home" style="background-color:cyan;">
+</div>
+<script type="text/javascript">
+	$("li").on("click", function() {
+		if ($(this).children("ul").css("display") == "none") {
+			$(this).children("ul").show();
+		}
+		else {
+			$(this).children("ul").hide();
+		}
+	});
+</script>

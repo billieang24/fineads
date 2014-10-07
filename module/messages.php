@@ -21,8 +21,20 @@ class Messages extends Eden_Class {
 		return $this;
 	}
 	
-	// public function getList($user, $pass) {
-	// }
+	public function getUnviewed() {
+		return $this->_database
+			->search('messages')
+			->addFilter('viewed = 0')
+			->getRow();
+	}
+
+	public function setViewed() {
+		return $this->_database
+			->model()
+			->setViewed('0')
+			->setViewed('1')
+			->save('messages');
+	}
 	
 	// public function getDetail($user, $pass) {
 	// 	return $this->_database

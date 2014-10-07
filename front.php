@@ -380,6 +380,10 @@ class Front extends Eden {
 		return new Messages($this->database());
 	}	
 	
+	public function admins() {
+		return new Admins($this->database());
+	}	
+
 	/* Protected Methods
 	-------------------------------*/
 	protected function _getVariables($path, $pattern) {
