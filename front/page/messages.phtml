@@ -1,82 +1,41 @@
-
-<div style="position:fixed;z-index:70;height:100%;width:20%;background-color:black;margin-top:0px;">
-<h1>ADMIN</h1>
-<a href="?logout=1">LOG OUT</a>
-<ul>
-	<liname="0">List
-		<ul>
-			<li name="1">
-				Branch
-				<ul>
-					<li name="3">
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-				</ul>
-			</li>
-			<li name="2">
-				Branch
-				<ul>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-				</ul>
-			</li>
-			<li>
-				Branch
-				<ul>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-</ul>
-Messages
-<div class="notif" style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
-	<a href="messages">Request Notification</a>
-</div>
-Add Project
-</div>
-<div class="section" data-anchor="home" style="padding-left:20%;margin:0px 3%;">
-	<h1>Welcome ADMIN</h1>
-<!-- <a href="?logout=1"><button class="btn btn-lg btn-info">logout</button></a>
-<a href="/admin"><button class="btn btn-lg btn-info">back</button></a>
-<div style="background-color:cyan;">
-	<?php foreach ($messages as $key => $message): ?>
-		<div>
-			<ul>
-				<li>
-					<?php echo $message['sender_name']; ?>
-				</li>
-				<li>
-					<?php echo $message['sender_email']; ?>
-				</li>
-				<li>
-					<?php echo $message['content']; ?>
-				</li>
-			</ul>
+<div class="container">
+	<div class="container2">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+				<h2 class="pull-left" style="font-family:monospace;"> Welcome Admin!</h2>
+			</div>
 		</div>
-	<?php endforeach ?> -->
-<!-- </div>	 -->
+		<div class="row">
+			<div class="col-sm-2 ">
+				<center>
+				<a href="/admin" role="button" class="btn btn-info btn-lg btn-margin col-sm-12"><span class="glyphicon glyphicon-off"></span> Back</a>
+				<a href="?logout=1" role="button" class="btn btn-info btn-lg btn-margin col-sm-12"><span class="glyphicon glyphicon-off"></span> Log Out</a>
+				</center>
+			</div>
+			<div class="col-sm-9 col-sm-offset-1 msg-box">
+				<?php foreach ($messages as $key => $message): ?>
+					<div class="panel-group" id="accordion">
+					  <div class="panel panel-default">
+					    <div class="panel-heading">
+					      <h4 class="panel-title">
+					      	<b>Sender:</b> <?php echo $message['sender_name']; ?>
+					      </h4>
+					    </div>
+					    <div id="collapseOne" class="panel-collapse collapse in">
+					      <div class="panel-body">
+								<b>E-mail:</b><?php echo $message['sender_email']; ?>
+							</br>
+
+								<b>Message:</b>
+								<p><?php echo $message['content']; ?></p>
+					      </div>
+					    </div>
+					  </div>
+					 </div>
+				<?php endforeach ?>
+			</div>
+		</div>
+	</div>
 </div>
 <script type="text/javascript">
 </script>
