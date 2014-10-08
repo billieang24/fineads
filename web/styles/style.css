@@ -89,3 +89,19 @@
 .header-name{
 	color:#fff;
 }
+.button-send{
+	border-radius: 10px;
+	margin-top: 15px;
+	height: 2em;
+	width: 4em;
+	font-size: 30px;
+	margin-right: 10px;
+}
+.button-upload{
+	border-radius: 10px;
+	margin-top: 28px;
+	height:2em;
+	width:4em;
+	font-size: 30px;
+	margin-left: 80px;
+}
