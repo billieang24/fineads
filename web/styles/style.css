@@ -32,3 +32,9 @@
 	font-family: monospace;;
 	margin: 75px;
 }
+.msg-container{
+	padding: 3% 3%;
+}
+.error{
+	display: none;
+}
