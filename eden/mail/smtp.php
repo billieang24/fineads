@@ -383,7 +383,7 @@ class Eden_Mail_Smtp extends Eden_Class {
 		//reset (some reason without this, this class spazzes out)
 		$this->_send('RSET');
 		
-		return $headers;
+		return $this;
 	}
 	/**
 	 * Sets body

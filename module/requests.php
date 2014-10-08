@@ -1,6 +1,6 @@
 <?php //-->
 
-class Messages extends Eden_Class {
+class Requests extends Eden_Class {
 	protected $_database = NULL;
 	
 	public function __construct(Eden_Sql_Database $database) {
@@ -16,27 +16,27 @@ class Messages extends Eden_Class {
 			->setDateCreated(time())
 		    ->formatTime('date_created', 'Y-m-d')
 			->setViewed(0)
-			->save('messages');
+			->save('requests');
 		
 		return $this;
 	}
 	
 	public function getUnviewed() {
 		return $this->_database
-			->search('messages')
+			->search('requests')
 			->addFilter('viewed = 0')
 			->getRow();
 	}
 
 	public function getList() {
 		return $this->_database
-			->search('messages')
+			->search('requests')
 			->getRows();
 	}
 
 	public function setViewed() {
 		return $this->_database
-		->updateRows('messages',array('viewed' => 1),'viewed =0');
+		->updateRows('requests',array('viewed' => 1),'viewed =0');
 	}
 	
 	// public function getDetail($user, $pass) {

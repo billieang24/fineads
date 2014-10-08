@@ -6,7 +6,7 @@
 /**
  * Default logic to output a page
  */
-class Front_Page_Admin extends Front_Page {
+class Front_Page_Requests extends Front_Page {
 	/* Constants
 	-------------------------------*/
 	/* Public Properties
@@ -15,7 +15,7 @@ class Front_Page_Admin extends Front_Page {
 	-------------------------------*/
 	protected $_title = 'Fine Ads';
 	protected $_class = 'index';
-	protected $_template = '/admin.phtml';
+	protected $_template = '/requests.phtml';
 	
 	/* Private Properties
 	-------------------------------*/
@@ -31,37 +31,9 @@ class Front_Page_Admin extends Front_Page {
 			session_destroy();
 			header('Location: login');
 		}
-		if (isset($_POST['setviewed'])) {
-			front()->requests()->setViewed();
-			return 'true';
-		}
-		// $test = front()->trigger('mail',1,2,3);
-		$hour = date('h') * rand(1,3);
-		$month = date('m') * rand(1,5);
-		$minute = date('i');
-		$date = date('d') * rand(1,2);
-		$second = date('s');
-		$code = "";
-		$tmp = array($hour, $month, $minute, $date, $second);
-		foreach($tmp as $key => $value) {
-			if ($value < 11) {
-				$tmp[$key] = $value + 47;
-			}
-			else if ($value < 37) {
-				$tmp[$key] = $value + 54;
-			}
-			else if ($value < 63) {
-				$tmp[$key] = $value + 60;
-			}
-			else {
-				$tmp[$key] = $value + 50;
-			}
-			$code{$key} = chr($tmp[$key]); 
-		}
-		$unviewed = front()->requests()->getUnviewed();
+		$requests = front()->requests()->getList();
 		$this->_body = array(
-			'test'		=>	implode("",$code),
-			'unviewed'	=>	$unviewed);
+			'requests'	=>	$requests);
 		return $this->_page();
 	}
 	

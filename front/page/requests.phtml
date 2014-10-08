@@ -13,21 +13,21 @@
 				</center>
 			</div>
 			<div class="col-sm-9 col-sm-offset-1 msg-box">
-				<?php foreach ($messages as $key => $message): ?>
+				<?php foreach ($requests as $key => $request): ?>
 					<div class="panel-group" id="accordion">
 					  <div class="panel panel-default">
 					    <div class="panel-heading">
 					      <h4 class="panel-title">
-					      	<b>Sender:</b> <?php echo $message['sender_name']; ?>
+					      	<b>Sender:</b> <?php echo $request['sender_name']; ?>
 					      </h4>
 					    </div>
 					    <div id="collapseOne" class="panel-collapse collapse in">
 					      <div class="panel-body">
-								<b>E-mail:</b><?php echo $message['sender_email']; ?>
+								<b>E-mail:</b><?php echo $request['sender_email']; ?>
 							</br>
 
-								<b>Message:</b>
-								<p><?php echo $message['content']; ?></p>
+								<b>Request:</b>
+								<p><?php echo $request['content']; ?></p>
 					      </div>
 					    </div>
 					  </div>

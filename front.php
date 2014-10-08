@@ -376,12 +376,16 @@ class Front extends Eden {
 			->parsePhp(dirname(__FILE__).'/front/error.phtml');
 	}
 	
-	public function messages() {
-		return new Messages($this->database());
+	public function requests() {
+		return new Requests($this->database());
 	}	
 	
 	public function admins() {
 		return new Admins($this->database());
+	}	
+
+	public function users() {
+		return new Users($this->database());
 	}	
 
 	public function portfolio() {

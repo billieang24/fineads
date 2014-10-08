@@ -1,5 +1,5 @@
 <div style="position:fixed;z-index:70;height:100%;width:20%;background-color:black;">
-<h1>ADMIN</h1>
+<h1><?php echo $test;?></h1>
 <a href="?logout=1">LOG OUT</a>
 <ul>
 	<liname="0">List
@@ -51,11 +51,12 @@
 </ul>
 Messages
 <div class="notif" style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
-	<a href="messages">Request Notification</a>
+	<a href="requests">Request Notification</a>
 </div>
 Add Project
 </div>
-<div class="section" data-anchor="home" style="background-color:cyan;">
+<div style="background-color:cyan;">
+
 </div>
 <script type="text/javascript">
 	$("li").on("click", function() {

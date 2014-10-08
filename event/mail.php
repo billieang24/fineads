@@ -1,20 +1,19 @@
 <?php //-->
 class Event_Mail {
 	public function __construct() {
-		front()->listen('new-post', $this, 'notify');
+		front()->listen('mail', $this, 'notify');
 	}
 	
-	public function notify($control, $event, $post) {
+	public function notify() {
 		eden('mail')->smtp(
 			'smtp.gmail.com', 
 			'jestine.banagbanag@gmail.com', 
 			'jestine123', 
 			465, true)
-			->setSubject('New Post - '.$post['post_title'])
-			->setBody($post['post_detail'], true)
-			->setBody($post['post_detail'])
-			->addTo('cblanquera@openovate.com')
-			->addTo('jdalmario@gmail.com')
+			->setSubject('Registration Code')
+			->setBody('<p>test</p>', true)
+			->setBody('test')
+			->addTo('billieang24@gmail.com')
 			->send()
 			->disconnect(); 
 	}
