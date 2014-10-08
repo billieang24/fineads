@@ -1,2 +1,2 @@
 <?php //-->
-return array();
+return array('Event_Mail');

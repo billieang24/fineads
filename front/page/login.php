@@ -6,7 +6,7 @@
 /**
  * Default logic to output a page
  */
-class Front_Page_Index extends Front_Page {
+class Front_Page_Login extends Front_Page {
 	/* Constants
 	-------------------------------*/
 	/* Public Properties
