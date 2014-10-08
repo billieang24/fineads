@@ -80,7 +80,7 @@
 	padding: 70px;
 }
 .project{
-	color: #fff;
+	color: black;
 }
 .project li{
 	font-size: 30px;
@@ -104,4 +104,15 @@
 	width:4em;
 	font-size: 30px;
 	margin-left: 80px;
+}
+.header-gallery{
+	color:#fff;
+	padding-top:10px;
+}
+.button-upload1{
+	height: 4em;
+	width: 6em;
+	margin-top: 0;
+	font-size: 20px;
+	border-radius: 10px
 }
