@@ -50,8 +50,8 @@
 	</li>
 </ul>
 Messages
-<div style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
-Request Notification
+<div class="notif" style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
+	<a href="messages">Request Notification</a>
 </div>
 Add Project
 </div>
@@ -65,5 +65,12 @@ Add Project
 		else {
 			$(this).children("ul").hide();
 		}
+	});
+	$(".notif").on("click", function() {
+		$.ajax({
+          url: "admin",
+          type: "POST",
+          data: {"setviewed":1}
+        });
 	});
 </script>

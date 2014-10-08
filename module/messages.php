@@ -28,12 +28,15 @@ class Messages extends Eden_Class {
 			->getRow();
 	}
 
+	public function getList() {
+		return $this->_database
+			->search('messages')
+			->getRows();
+	}
+
 	public function setViewed() {
 		return $this->_database
-			->model()
-			->setViewed('0')
-			->setViewed('1')
-			->save('messages');
+		->updateRows('messages',array('viewed' => 1),'viewed =0');
 	}
 	
 	// public function getDetail($user, $pass) {

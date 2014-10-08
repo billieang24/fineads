@@ -1,0 +1,21 @@
+<h1>ADMIN</h1>
+<a href="?logout=1">LOG OUT</a>
+<div style="background-color:cyan;">
+	<?php foreach ($messages as $key => $message): ?>
+		<div>
+			<ul>
+				<li>
+					<?php echo $message['sender_name']; ?>
+				</li>
+				<li>
+					<?php echo $message['sender_email']; ?>
+				</li>
+				<li>
+					<?php echo $message['content']; ?>
+				</li>
+			</ul>
+		</div>
+	<?php endforeach ?>
+</div>
+<script type="text/javascript">
+</script>

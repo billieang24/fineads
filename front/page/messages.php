@@ -15,7 +15,7 @@ class Front_Page_Index extends Front_Page {
 	-------------------------------*/
 	protected $_title = 'Fine Ads';
 	protected $_class = 'index';
-	protected $_template = '/admin.phtml';
+	protected $_template = '/messages.phtml';
 	
 	/* Private Properties
 	-------------------------------*/
@@ -31,13 +31,9 @@ class Front_Page_Index extends Front_Page {
 			session_destroy();
 			header('Location: login');
 		}
-		if (isset($_POST['setviewed'])) {
-			front()->messages()->setViewed();
-			return 'true';
-		}
-		$unviewed = front()->messages()->getUnviewed();
+		$messages = front()->messages()->getList();
 		$this->_body = array(
-			'unviewed'	=>	$unviewed);
+			'messages'	=>	$messages);
 		return $this->_page();
 	}
 	
