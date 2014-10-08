@@ -35,6 +35,7 @@ class Front_Page_Index extends Front_Page {
 				->portfolio()
 				->create(
 					'/images/'.$_FILES['image']['name']."-".str_replace('/tmp/',"",($_FILES['image']['tmp_name'])));
+			return "true";
 		}
 		return $this->_page();
 	}

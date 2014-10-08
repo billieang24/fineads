@@ -10,7 +10,7 @@ class Portfolio extends Eden_Class {
 	public function create($image) {
 		$this->_database
 			->model()
-			->setImageName($user)
+			->setImageName($image)
 			->save('portfolio');
 		
 		return $this;

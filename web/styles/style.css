@@ -38,6 +38,13 @@
 .navbar-form{
 	padding: 0px 5px;
 }
+.picture-inner{
+	border: 2px solid red;
+	margin: 10px auto;
+	padding: 2px;
+	width: 125px;
+	height: 175px;
+}
 .success{
 	display: none;
 	background-color: #3e8f3e;
