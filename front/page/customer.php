@@ -24,6 +24,9 @@ class Front_Page_Customer extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
+		if (isset($_POST['message'])) {
+			return $_POST['message'];
+		}
 		return $this->_page();
 	}
 	

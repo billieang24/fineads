@@ -49,13 +49,11 @@ DROP TABLE IF EXISTS `messages`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `messages` (
   `message_id` int(11) NOT NULL AUTO_INCREMENT,
-  `sender_name` varchar(255) DEFAULT NULL,
-  `sender_email` varchar(255) DEFAULT NULL,
+  `sender` int(11) DEFAULT NULL,
+  `recipient` int(11) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
-  `date_created` date DEFAULT NULL,
-  `viewed` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +62,6 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES (1,'tres','123@gmail.com','haha','2014-10-07',1),(10,'test','haha@gago.com','12313testingmessage','2014-10-08',1),(11,'test','haha@gago.com','12313testingmessage','2014-10-08',1),(12,'tetete','123@t.com','hahaha','2014-10-08',1),(13,'testqq','43@TY.COM','TRY','2014-10-08',1);
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,6 +88,65 @@ LOCK TABLES `portfolio` WRITE;
 INSERT INTO `portfolio` VALUES (3,'animation.gif-phpVDmhjH'),(4,'frontview.JPG-phpZpftMy');
 /*!40000 ALTER TABLE `portfolio` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `requests`
+--
+
+DROP TABLE IF EXISTS `requests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `requests` (
+  `request_id` int(11) NOT NULL DEFAULT '0',
+  `sender_name` varchar(255) DEFAULT NULL,
+  `sender_email` varchar(255) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  `date_created` date DEFAULT NULL,
+  `viewed` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`request_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `requests`
+--
+
+LOCK TABLES `requests` WRITE;
+/*!40000 ALTER TABLE `requests` DISABLE KEYS */;
+INSERT INTO `requests` VALUES (1,'tres','123@gmail.com','haha','2014-10-07',1),(10,'test','haha@gago.com','12313testingmessage','2014-10-08',1),(11,'test','haha@gago.com','12313testingmessage','2014-10-08',1),(12,'tetete','123@t.com','hahaha','2014-10-08',1),(13,'testqq','43@TY.COM','TRY','2014-10-08',1),(14,'testqq','43@TY.COM','TRY','2014-10-08',1);
+/*!40000 ALTER TABLE `requests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `lname` varchar(255) DEFAULT NULL,
+  `fname` varchar(255) DEFAULT NULL,
+  `mname` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `contactno` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (4,'test','pass','lname','fname','mname','address','email@y.com','contact'),(5,'try','123','ttt','sss','rrr','56','ity@g.com','contactsss');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -101,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-08 11:15:35
+-- Dump completed on 2014-10-08 23:23:53

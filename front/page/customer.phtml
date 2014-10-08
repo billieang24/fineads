@@ -1,28 +1,42 @@
 <div>
-<div class="clearfix" style="position:fixed;z-index:70;height:70px;width:100%;background-color:black;">
-	<h1 class="pull-left header-name">Hi "NAME"</h1>
+	<div class="clearfix" style="position:fixed;z-index:70;height:70px;width:100%;background-color:black;">
+		<h1 class="pull-left header-name">Hi "NAME"</h1>
 		<ul class="nav-bar2">
 			<li>Projects</li>
 			<li>Gallery</li>
 			<li>Messages</li>
 			<li>Billing</li>
 		</ul>
-</div>
-<div style="position:fixed;z-index:70;height:100%;width:20em;background-color:grey;margin-top:70px;">
+	</div>
+	<div style="position:fixed;z-index:70;height:100%;width:20em;background-color:grey;margin-top:70px;">
 		<ul class="project">
 			<li>Project</li>
 			<li>Project</li>
 			<li>Project</li>
 		</ul>
 	</div>
-<div class="col-sm-offset-3" style="position:fixed;height:30em;width:40em;background-color:grey;margin-top:8em;border-radius:10px;">
+	<div class="col-sm-offset-3" style="position:fixed;height:30em;width:40em;background-color:grey;margin-top:8em;border-radius:10px;">
 	</div>
 	<div class="col-sm-offset-3" style="position:fixed;height:80px;width:40em;background-color:grey;margin-top:41em;border-radius:10px;">
-		<h1 style="text-align: right;">Send</h1>
+		<textarea></textarea>
+		<button class="send">Send</button>
 	</div>
-<div class="col-sm-offset-9" style="position:fixed;height:39em;width:20em;background-color:#fff;margin-top:8em;border-radius:10px;">
-	<div style="height:30em;width:20;background-color:grey;border-radius:10px">
+	<div class="col-sm-offset-9" style="position:fixed;height:39em;width:20em;background-color:#fff;margin-top:8em;border-radius:10px;">
+		<div style="height:30em;width:20;background-color:grey;border-radius:10px">
+		</div>
+		<button style="border-radius:5px">Upload</button>
 	</div>
-	<button style="border-radius:5px">Upload</button>
 </div>
-</div>
+<script type="text/javascript">
+	jQuery(function($) {
+		$(".send").on("click", function() {
+			$.ajax({
+				type: "POST",
+				url: "customer",
+				data: {message : $(this).parent().children("textarea").val()}
+			}).done(function() {
+				alert($(".send").parent().children("textarea").val());
+			});
+		});
+	});
+</script>
