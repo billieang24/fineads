@@ -2,7 +2,6 @@
 	<li data-menuanchor="home" class="active"><a href="#home"><img class="logo" src="images\logobnw1.png"/></a></li>
     <li data-menuanchor="portfolio"><a href="#portfolio">Portfolio</a></li>
     <li data-menuanchor="inquiry"><a href="#inquiry">Inquiry</a></li>
-    <li data-menuanchor="about"><a href="#about">About</a></li>
     <li data-menuanchor="contact"><a href="#contact">Contact Us</a></li>
 	<li class="navbar-form">
 		<form method="post">
@@ -27,31 +26,31 @@
 		<div class="slide"><img src="images/galleryImage/b1.jpg" class="body-div" style="width:100%;"/></div>
 		<div class="slide"><img src="images/galleryImage/b2.jpg" class="body-div" style"width:100%;"/></div>
 	</div>
-	<div class="section" data-anchor="inquiry">
+	<div class="section" data-anchor="inquiry" style="background-color:#adefda;">
 			<div class="col-xs-6 col-sm-2 tarp">
 				<h4>Tarp</h4>
 				<h6>Php 10.00/sq.-ft</br>
 					additional Php 100.00 up/sq.-ft Depending on layout
 				</h6>
 				Height:<input type="number" min="1" name="height" class="form-control"/>
-				Width:<input type="number" min="1" name="width"class="form-control"/>
-				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				Width:<input type="number" min="1" name="width"class="form-control"/></br>
+				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button></br>
 				<div class="estimate"></div>
 			</div>
 			<div class="col-xs-6 col-sm-3 signboard">
 				<h4>Signboard Sticker with angle bar frame</h4>
 				<h6>Php 100.00/sq.-ft + installation</h6>
 				Height:<input type="number" min="1" name="height" class="form-control"/>
-				Width:<input type="number" min="1" name="width"class="form-control"/>
-				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				Width:<input type="number" min="1" name="width"class="form-control"/></br>
+				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button></br>
 				<div class="estimate"></div>
 			</div>
 			<div class="col-xs-6 col-sm-3 mural">
 				<h4>Mural Sintra Board Sticker</h4>
 				<h6>Php 100.00/sq-ft up + installation</h6>
 				Height:<input type="number" min="1" name="height" class="form-control"/>
-				Width:<input type="number" min="1" name="width"class="form-control"/>
-				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				Width:<input type="number" min="1" name="width"class="form-control"/></br>
+				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button>
 				<div class="estimate"></div>
 			</div>
 			<div class="col-xs-6 col-sm-3 sticker">
@@ -66,27 +65,36 @@
 					<option value="ordinary">Ordinary</option>
 					<option value="single">Single Face</option>
 					<option value="double">Double Face</option>
-				</select>
-				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				</select></br>
+				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button>
 				<div class="estimate"></div>
 			</div>
 			<div class="col-xs-6 col-sm-1 tshirt">
 				<h4>T-shirt</h4>
-				Quantity:<input type="number" min="1" name="quantity" class="form-control"/>
-				<button type="submit" class="btn btn-sm btn-default compute">Compute</button>
+				Quantity:<input type="number" min="1" name="quantity" class="form-control"/></br>
+				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button>
 				<div class="estimate"></div>
 			</div>
 	</div>
-	<div class="section" data-anchor="about" style="background-color:blue;">
-		<?php print_r($test);?>
-		<form method="POST">
-			<input type="text" name="name" required/>
-			<input type="email" name="email" required/>
-			<textarea name="content" rows="20" cols="20" style="font-size: 10pt; font-family: Arial;"></textarea>
-			<button type="submit">Submit</button>
-		</form>
-	</div>
-	<div class="section" data-anchor="contact" style="background-color:yellow;">
+	<div class="section" data-anchor="contact" style="background-color:#faedaf;">
+		<div class="msg">
+			<center>
+				<h2>Leave a message</h2>
+			</center>
+			<div class="col-sm-4">
+				<form method="POST">
+					<h3>Name:</h3>
+					<input type="text" name="name" class="form-control" required/>
+					<h3>E-mail:</h3>
+					<input type="email" name="email" class="form-control"required/>
+			</div>
+			<div class="col-sm-6">
+					<h3>Message</h3>
+					<textarea name="content" class=" form-control" rows="15" cols="15" style="font-size: 10pt; font-family: Arial;"></textarea>
+			</div>
+					<button type="submit" class="btn btn-lg btn-danger" style="margin-top:10%;">Submit</button>
+				</form>
+		</div>
 	</div>
 </div>
 <script type="text/javascript">
