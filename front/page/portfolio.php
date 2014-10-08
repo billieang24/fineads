@@ -13,7 +13,7 @@ class Front_Page_Index extends Front_Page {
 	-------------------------------*/
 	/* Protected Properties
 	-------------------------------*/
-	protected $_title = 'Style and Beauty Hub';
+	protected $_title = 'Fine Ads';
 	protected $_class = 'admin';
 	protected $_template = '/portfolio.phtml';
 	
@@ -34,7 +34,7 @@ class Front_Page_Index extends Front_Page {
 			front()
 				->portfolio()
 				->create(
-					'/images/'.$_FILES['image']['name']."-".str_replace('/tmp/',"",($_FILES['image']['tmp_name'])));
+					$_FILES['image']['name']."-".str_replace('/tmp/',"",($_FILES['image']['tmp_name'])));
 			return "true";
 		}
 		return $this->_page();

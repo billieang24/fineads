@@ -59,6 +59,7 @@
 			}
 		});
 		$("input[type='file']").on("change", function() {
+			$(".success").hide();
 			if ($(this)[0].files[0].type.search(/jpeg|png|gif/) == -1) {
 				$(".invalid-image").show();		
 				$(this).replaceWith($(this).val("").clone(true));
