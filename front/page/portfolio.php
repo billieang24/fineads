@@ -13,9 +13,9 @@ class Front_Page_Index extends Front_Page {
 	-------------------------------*/
 	/* Protected Properties
 	-------------------------------*/
-	protected $_title = 'Fine Ads';
-	protected $_class = 'index';
-	protected $_template = '/index.phtml';
+	protected $_title = 'Style and Beauty Hub';
+	protected $_class = 'admin';
+	protected $_template = '/portfolio.phtml';
 	
 	/* Private Properties
 	-------------------------------*/
@@ -24,11 +24,17 @@ class Front_Page_Index extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
-		$portfolio = front()->portfolio()->getList();
-		$this->_body = array(
-			'portfolio' => $portfolio);
-		if (isset($_POST['name'])) {
-			front()->messages()->create($_POST['name'],$_POST['email'],$_POST['content']);
+		if (!isset($_SESSION['admin'])){
+			header('Location:/login');
+		}
+		if (isset($_FILES['image'])){
+			move_uploaded_file(
+				$_FILES['image']['tmp_name'],
+				dirname(__FILE__).'/../../web/images/'.$_FILES['image']['name']."-".str_replace('/tmp/',"",($_FILES['image']['tmp_name'])));
+			front()
+				->portfolio()
+				->create(
+					'/images/'.$_FILES['image']['name']."-".str_replace('/tmp/',"",($_FILES['image']['tmp_name'])));
 		}
 		return $this->_page();
 	}

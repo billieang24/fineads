@@ -20,11 +20,9 @@
 		<img src="images/bg.png" class="body-div" style="width:100%;"/>
 	</div>
 	<div class="section" data-anchor="portfolio" style="background-color:red;">
-		<div class="slide"><img src="images/galleryImage/a1.jpg" class="body-div" style="width:100%;"/></div>
-		<div class="slide"><img src="images/galleryImage/a2.jpg" class="body-div" style="width:100%;"/></div>
-		<div class="slide"><img src="images/galleryImage/a3.jpg" class="body-div" style="width:100%;"/></div>
-		<div class="slide"><img src="images/galleryImage/b1.jpg" class="body-div" style="width:100%;"/></div>
-		<div class="slide"><img src="images/galleryImage/b2.jpg" class="body-div" style"width:100%;"/></div>
+		<?php foreach ($portfolio as $key => $item): ?>
+			<div class="slide"><img src="images/<?php echo $item['image_name']?>" class="body-div" style="width:100%;"/></div>
+		<?php endforeach;?>
 	</div>
 	<div class="section" data-anchor="inquiry" style="background-color:#adefda;">
 			<div class="col-xs-6 col-sm-2 tarp">
