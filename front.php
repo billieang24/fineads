@@ -392,6 +392,18 @@ class Front extends Eden {
 		return new Portfolio($this->database());
 	}	
 
+	public function messages() {
+		return new Messages($this->database());
+	}	
+
+	public function projects() {
+		return new Projects($this->database());
+	}	
+
+	public function projectuser() {
+		return new Projectuser($this->database());
+	}	
+
 	/* Protected Methods
 	-------------------------------*/
 	protected function _getVariables($path, $pattern) {

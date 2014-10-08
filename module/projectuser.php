@@ -1,43 +1,35 @@
 <?php //-->
 
-class Messages extends Eden_Class {
+class Projectuser extends Eden_Class {
 	protected $_database = NULL;
 	
 	public function __construct(Eden_Sql_Database $database) {
 		$this->_database = $database;
 	}
 	
-	public function create($sender, $code, $content) {
+	public function create($code, $user) {
 		$this->_database
 			->model()
-			->setSender($sender)
-			->setProject($code)
-			->setContent($content)
-			->save('messages');
+			->setCode($code)
+			->setUserId($user)
+			->save('projectuser');
 		
 		return $this;
 	}
 	
-	// public function getUnviewed() {
-	// 	return $this->_database
-	// 		->search('requests')
-	// 		->addFilter('viewed = 0')
-	// 		->getRow();
-	// }
-
-	public function getList($code) {
-		return $this->_database
-			->search('messages')
-			->addInnerJoinOn('users', 'sender = user_id')
-			->addFilter('project = \''.$code.'\'')
-			->getRows();
+	public function getDetail($id) {
+		return $this->_database->getRow('projectuser', 'user_id', $id);
 	}
 
-	// public function setViewed() {
-	// 	return $this->_database
-	// 	->updateRows('requests',array('viewed' => 1),'viewed =0');
+	// public function getList($user, $pass) {
 	// }
-	
+
+	public function getList($user) {
+		return $this->_database
+			->search('projectuser')
+			->addFilter('user_id = \''.$user.'\'')
+			->getRows();
+	}	
 	// public function getDetail($user, $pass) {
 	// 	return $this->_database
 	// 		->search('admins')

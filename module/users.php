@@ -7,7 +7,7 @@ class Users extends Eden_Class {
 		$this->_database = $database;
 	}
 	
-	public function create($username, $password, $lname, $fname, $mname, $address, $email, $contact, $code) {
+	public function create($username, $password, $lname, $fname, $mname, $address, $email, $contact) {
 		$this->_database
 			->model()
 			->setUsername($username)
@@ -20,7 +20,7 @@ class Users extends Eden_Class {
 			->setContactno($contact)
 			->setUserCreated(date('Y-m-d H:i:s'))
 			->save('users');
-		
+				
 		return $this;
 	}
 	
@@ -36,9 +36,17 @@ class Users extends Eden_Class {
 	// 		->getRows();
 	// }
 	
-	// public function getDetail($id) {
-	// 	return $this->_database->getRow('user', 'user_id', $id);
-	// }
+	public function getDetail($user, $pass) {
+		return $this->_database
+			->search('users')
+			->addFilter('username = \''.$user.'\'')
+			->addFilter('password = \''.$pass.'\'')
+			->getRow();
+	}
+
+	public function getDetailById($id) {
+		return $this->_database->getRow('users', 'user_id', $id);
+	}
 
 	// public function getDetailByUid($uid) {
 	// 	return $this->_database->getRow('user', 'uid', $uid);

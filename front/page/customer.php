@@ -24,9 +24,25 @@ class Front_Page_Customer extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
-		if (isset($_POST['message'])) {
-			return $_POST['message'];
+		if (!isset($_SESSION['customer'])) {
+			header('Location: /');
 		}
+		if (isset($_GET['logout'])) {
+			session_destroy();
+			header('Location: /');
+		}
+		if (isset($_POST['message'])) {
+			front()->messages()->create($_SESSION['customer'], $_POST['code'], $_POST['message']);
+		}
+		$projectuser = front()->projectuser()->getDetail($_SESSION['customer']);
+		if (isset($_GET['code'])) {
+			$projectuser['code'] = $_GET['code']; 
+		}
+		$this->_body = array(
+			'code'		=>	$projectuser['code'],
+			'projects'	=>	front()->projectuser()->getList($_SESSION['customer']),
+			'messages'	=>	front()->messages()->getList($projectuser['code']),
+			'user'		=>	front()->users()->getDetailById($_SESSION['customer']));
 		return $this->_page();
 	}
 	

@@ -28,7 +28,17 @@ class Front_Page_Index extends Front_Page {
 		$this->_body = array(
 			'portfolio' => $portfolio);
 		if (isset($_POST['name'])) {
-			front()->messages()->create($_POST['name'],$_POST['email'],$_POST['content']);
+			front()->requests()->create($_POST['name'],$_POST['email'],$_POST['content']);
+		}
+		if (isset($_POST['username'])) {
+			if(front()->users()->getDetail($_POST['username'],$_POST['password'])) {
+				$user = front()->users()->getDetail($_POST['username'],$_POST['password']);
+				$_SESSION['customer'] = $user['user_id'];
+				header('Location: customer');
+			}	
+			else {
+				return "invalid username or password";
+			}
 		}
 		return $this->_page();
 	}

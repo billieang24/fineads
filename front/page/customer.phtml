@@ -1,6 +1,7 @@
+<a href="?logout=1">LOG OUT</a>
 <div>
 	<div class="clearfix" style="position:fixed;z-index:70;height:70px;width:100%;background-color:black;">
-		<h1 class="pull-left header-name">Hi "NAME"</h1>
+		<h1 class="pull-left header-name">Hi <?php echo $user['username'];?></h1>
 		<ul class="nav-bar2">
 			<li>Projects</li>
 			<li>Gallery</li>
@@ -10,12 +11,17 @@
 	</div>
 	<div style="position:fixed;z-index:70;height:100%;width:20em;background-color:grey;margin-top:70px;">
 		<ul class="project">
-			<li>Project</li>
-			<li>Project</li>
-			<li>Project</li>
+			<?php foreach ($projects as $key => $project)	{
+					echo '<li><a href="?code='.$project['code'].'">'.$project['code'].'</a></li>';
+				} 
+			?>
 		</ul>
 	</div>
-	<div class="col-sm-offset-3" style="position:fixed;height:30em;width:40em;background-color:grey;margin-top:8em;border-radius:10px;">
+	<div class="msg-box col-sm-offset-3" style="position:fixed;height:30em;width:40em;background-color:grey;margin-top:8em;border-radius:10px;">
+		<?php foreach($messages as $key => $message) {
+					echo $message['username'].': '.$message['content'].'<br/>';
+				}
+		?>
 	</div>
 	<div class="col-sm-offset-3" style="position:fixed;height:80px;width:40em;background-color:grey;margin-top:41em;border-radius:10px;">
 		<textarea></textarea>
@@ -33,10 +39,10 @@
 			$.ajax({
 				type: "POST",
 				url: "customer",
-				data: {message : $(this).parent().children("textarea").val()}
-			}).done(function() {
-				alert($(".send").parent().children("textarea").val());
+				data: {code : "<?php echo $code; ?>", message : $(this).parent().children("textarea").val()}
 			});
+			$(".msg-box").append("<?php echo $user['username'].': ';?>"+$(this).parent().children("textarea").val()+"<br/>");
+			$(this).parent().children("textarea").val("");
 		});
 	});
 </script>
