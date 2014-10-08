@@ -2,6 +2,27 @@
 	src: "styles/bootstrap/fonts/CooperBlackStd.otf";
 	font-family: cooper;
 }
+.body-div{
+	height:700px;
+}
+.carousel{
+	padding: 100px;
+}
+.error{
+	display: none;
+}
+.logo{
+	height: 30px;
+	margin:0px 30px 0px 50px; 
+	width: 100px;
+}
+.msg{
+	font-family: monospace;;
+	margin: 75px;
+}
+.msg-container{
+	padding: 3% 3%;
+}
 .nav-fixed{
 	position: fixed !important; 
 	background-color: black;
@@ -14,27 +35,10 @@
 	font-family:monospace;
 	font-size: 16px;
 }
-.logo{
-	height: 30px;
-	margin:0px 30px 0px 50px; 
-	width: 100px;
-}
 .navbar-form{
 	padding: 0px 5px;
 }
-.body-div{
-	height:700px;
-}
-.carousel{
-	padding: 100px;
-}
-.msg{
-	font-family: monospace;;
-	margin: 75px;
-}
-.msg-container{
-	padding: 3% 3%;
-}
-.error{
+.success{
 	display: none;
+	background-color: #3e8f3e;
 }
