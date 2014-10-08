@@ -69,3 +69,23 @@
 	display: none;
 	background-color: #3e8f3e;
 }
+.nav-bar2{
+	color: #fff;
+	float: left;
+	padding-top: 20px;
+}
+.nav-bar2 li{
+	display: inline;
+	font-size: 30px;
+	padding: 70px;
+}
+.project{
+	color: #fff;
+}
+.project li{
+	font-size: 30px;
+	padding-top: 30px;
+}
+.header-name{
+	color:#fff;
+}
