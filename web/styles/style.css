@@ -116,3 +116,43 @@
 	font-size: 20px;
 	border-radius: 10px
 }
+.button-add{
+	height:4em;
+	width:6em;
+	border-radius: 10px;
+	font-size: 20px;
+	margin-top: 23em;
+	margin-right: 1em;
+}	
+.header-Project{
+	color:black;
+	font-size: 30px;
+	margin-left: 3em;
+	margin-top: 3em;
+}
+.text-box{
+	height: 2em;
+	font-size: 25px;
+	margin-top: 0;
+
+}
+.header-code{
+	color: black;
+	font-size: 25px;
+	margin-left: 10px;
+}
+.header-project2{
+	color: black;
+	font-size: 30px;
+	text-align: center;
+}
+.button{
+	height: 3em;
+	width: 6em;
+	border-radius: 10px;
+	border-style: solid;
+	font-style: bold;
+	font-size: 20px;
+	margin-left: 10em;
+	margin-top: 2em;
+}
