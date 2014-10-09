@@ -24,20 +24,28 @@
 		<div class="row col-sm-9 col-sm-offset-2">
 				<h3>Add a project</h3>
 				<div class=" col-sm-8 ">
-					<form>
-						<input class="form-control pull-right" type="text" name="project" placeholder="Project name" required/></br></br>
-						<select class="form-control">
-							<option>Tarp</option>
-							<option>Signboard Sticker with angle bar frame</option>
-							<option>Mural Sintra Board Sticker</option>
-							<option>Sticker</option>
-							<option>T-shirt</option>
+					<form method="POST">
+						<input class="form-control pull-right" type="text" name="name" placeholder="Project name" required/></br></br>
+						<select name="type" class="form-control">
+							<option value="Tarpaulin">Tarpaulin</option>
+							<option value="Signboard Sticker with angle bar frame">Signboard Sticker with angle bar frame</option>
+							<option value="Mural Sintra Board Sticker">Mural Sintra Board Sticker</option>
+							<option value="Sticker">Sticker</option>
+							<option value="T-shirt">T-shirt</option>
 						</select></br>
-						<div class="col-sm-4 col-sm-offset-2">
+						<div class="height col-sm-4 col-sm-offset-2">
 							<h5>Height:</h5>
 							<input type="number" class="form-control " name="height" min="1"/>
 							<h5>Width:</h5>
 							<input type="number" class="form-control " name="width" min="1"/>
+						</div>
+						<div class="quantity col-sm-4 col-sm-offset-2">
+							<h5>Quantity:</h5>
+							<input type="number" class="form-control " name="quantity" min="1"/>
+						</div>
+						<div class="face col-sm-4 col-sm-offset-2">
+							<h5>Face:</h5>
+							<input class="form-control pull-right" type="text" name="face" placeholder="type"/></br></br>
 						</div>
 						<button class="pull-right btn btn-lg btn-info" type="submit">Add</button>
 					</form>
@@ -46,3 +54,27 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".quantity").hide();
+		$(".face").hide();
+		$(".type").hide();
+	});
+	$("select").on("change", function(){
+		$(".quantity").hide();
+		$(".height").hide();
+		$(".face").hide();
+		$(".type").hide();
+		if ($(this).val() == "T-shirt") {
+			$(".quantity").show();
+		}
+		else if ($(this).val() == "Sticker") {
+			$(".height").show();
+			$(".face").show();
+		}
+		else {
+			$(".height").show();
+		}
+	});
+
+</script>

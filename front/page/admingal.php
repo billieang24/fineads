@@ -24,6 +24,21 @@ class Front_Page_admingal extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
+		if (!isset($_SESSION['admin'])) {
+			header('Location: login');
+		}
+		if (isset($_GET['logout'])) {
+			session_destroy();
+			header('Location: login');
+		}
+		if (isset($_POST['project'])) {
+			move_uploaded_file(
+				$_FILES['image']['tmp_name'],
+				dirname(__FILE__).'/../../web/images/'.$_FILES['image']['name']."-".str_replace('/tmp/',"",($_FILES['image']['tmp_name'])));
+			front()->gallery()->create($_POST['project'],'/images/'.$_FILES['image']['name']."-".str_replace('/tmp/',"",($_FILES['image']['tmp_name'])));
+		}
+		$codes = front()->projectuser()->getList($_SESSION['admin']);
+		$this->_body = array('codes' => $codes);
 		return $this->_page();
 	}
 	

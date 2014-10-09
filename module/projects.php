@@ -7,10 +7,16 @@ class Projects extends Eden_Class {
 		$this->_database = $database;
 	}
 	
-	public function create($code) {
+	public function create($code, $type, $height, $width, $quantity, $face, $name) {
 		$this->_database
 			->model()
+			->setProjectName($name)
 			->setCode($code)
+			->setType($type)
+			->setHeight($height)
+			->setWidth($width)
+			->setQuantity($quantity)
+			->setFace($face)
 			->save('projects');
 		
 		return $this;
