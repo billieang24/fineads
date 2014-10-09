@@ -25,8 +25,8 @@ class Front_Page_Index extends Front_Page {
 	-------------------------------*/
 	public function render() {
 		$portfolio = front()->portfolio()->getList();
-		$this->_body = array(
-			'portfolio' => $portfolio);
+		// $this->_body = array(
+		// 	);
 		if (isset($_POST['name'])) {
 			front()->requests()->create($_POST['name'],$_POST['email'],$_POST['content']);
 		}
@@ -36,10 +36,34 @@ class Front_Page_Index extends Front_Page {
 				$_SESSION['customer'] = $user['user_id'];
 				header('Location: customer');
 			}	
-			else {
-				return "invalid username or password";
+			else{
+				$error ="invalid username or password";
 			}
 		}
+
+		if (isset($_POST['code'])) {
+			if(front()->projects()->getDetail($_POST['code'])) {
+				front()->users()->create(
+					$_POST['username'],
+					$_POST['password'],
+					$_POST['lname'],
+					$_POST['fname'],
+					$_POST['mname'],
+					$_POST['address'],
+					$_POST['email'],
+					$_POST['contact'],
+					0);
+				$user = front()->users()->getDetail($_POST['username'],$_POST['password'],0);
+				front()->projectuser()->create($_POST['code'], $user['user_id']);
+				$_SESSION['customer'] = $user['user_id'];
+				header('Location: customer');
+			}
+			else{
+				$error ="invalid code";
+			}
+
+		};
+		$this->_body = array('error'=> isset($error)?$error:null,'portfolio' => $portfolio);
 		return $this->_page();
 	}
 	

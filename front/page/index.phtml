@@ -1,21 +1,31 @@
+	
 <ul id="menu" class="nav nav­pills nav-justified nav-fixed">
 	<li data-menuanchor="home" class="active"><a href="#home"><img class="logo" src="images\logobnw1.png"/></a></li>
     <li data-menuanchor="portfolio"><a href="#portfolio">Portfolio</a></li>
     <li data-menuanchor="inquiry"><a href="#inquiry">Inquiry</a></li>
-    <li data-menuanchor="contact"><a href="#contact">Contact Us</a></li>
+    <li data-menuanchor="contact"><a href="#contact">Contact Us</a></li>	
+    <li></li>
+	<li><?php if (isset($error)):?>
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button><h6>Invalid username or password!</h6>
+			</div>
+	<?php endif; ?></li>
 	<li class="navbar-form">
 		<form method="post">
 		<input type="text" class="form-control"name="username" placeholder="username" required/>
 	</li>
+
 	<li class="navbar-form">
 		<input type="password" class="form-control" name="password" placeholder="password" required/>
 	</li>
 	<li class="navbar-form">
-		<button type="submit" class="btn btn-sm btn-default">Log in</button>
+		<button type="submit" class="btn btn-sm btn-primary">Log in</button>
 		</form>
 	</li>
-	<li class="navbar-form">
-		<a href="registration"><button class="btn btn-sm btn-default">Sign Up</button></a>
+	<li>
+		<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+		 Sign Up
+		</button>
 	</li>
 </ul>
 <div id="fullpage">
@@ -33,24 +43,30 @@
 				<h6>Php 10.00/sq.-ft</br>
 					additional Php 100.00 up/sq.-ft Depending on layout
 				</h6>
-				Height:<input type="number" min="1" name="height" class="form-control"/>
-				Width:<input type="number" min="1" name="width"class="form-control"/></br>
+				<h5>Height:</h5>
+				<input type="number" min="1" name="height" class="form-control"/>
+				<h5>Width:</h5>
+				<input type="number" min="1" name="width"class="form-control"/></br>
 				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button></br>
 				<div class="estimate"></div>
 			</div>
 			<div class="col-xs-6 col-sm-3 signboard">
 				<h4>Signboard Sticker with angle bar frame</h4>
 				<h6>Php 100.00/sq.-ft + installation</h6>
-				Height:<input type="number" min="1" name="height" class="form-control"/>
-				Width:<input type="number" min="1" name="width"class="form-control"/></br>
+				<h5>Height:</h5>
+				<input type="number" min="1" name="height" class="form-control"/>
+				<h5>Width:</h5>
+				<input type="number" min="1" name="width"class="form-control"/></br>
 				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button></br>
 				<div class="estimate"></div>
 			</div>
 			<div class="col-xs-6 col-sm-3 mural">
 				<h4>Mural Sintra Board Sticker</h4>
 				<h6>Php 100.00/sq-ft up + installation</h6>
-				Height:<input type="number" min="1" name="height" class="form-control"/>
-				Width:<input type="number" min="1" name="width"class="form-control"/></br>
+				<h5>Height:</h5>
+				<input type="number" min="1" name="height" class="form-control"/>
+				<h5>Width:</h5>
+				<input type="number" min="1" name="width"class="form-control"/></br>
 				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button>
 				<div class="estimate"></div>
 			</div>
@@ -60,8 +76,10 @@
 					Php 400.00/sq-ft panaflex Single Face</br>
 					Php 750.00/sq-ft panaflex Double Face</br>
 				</h6>
-				Height:<input type="number" min="1" name="height" class="form-control"/>
-				Width:<input type="number" min="1" name="width"class="form-control"/></br>
+				<h5>Height:</h5>
+				<input type="number" min="1" name="height" class="form-control"/>
+				<h5>Width:</h5>
+				<input type="number" min="1" name="width"class="form-control"/></br>
 				<select class="form-control">
 					<option value="ordinary">Ordinary</option>
 					<option value="single">Single Face</option>
@@ -72,7 +90,8 @@
 			</div>
 			<div class="col-xs-6 col-sm-1 tshirt">
 				<h4>T-shirt</h4>
-				Quantity:<input type="number" min="1" name="quantity" class="form-control"/></br>
+				<h5>Quantity:</h5>
+				<input type="number" min="1" name="quantity" class="form-control"/></br>
 				<button type="submit" class="btn btn-sm btn-primary compute">Compute</button>
 				<div class="estimate"></div>
 			</div>
@@ -97,6 +116,49 @@
 				</form>
 		</div>
 	</div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Registration</h4>
+      </div>
+      <div class="modal-body">
+       <div class="registration">
+				<?php if (isset($error)):?>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					  <strong>Warning!</strong> Invalid code!
+					</div>
+				<?php endif; ?>
+			<form method="POST">
+				<div class="col-sm-4">
+					<input type="text" class="form-control" name="lname" placeholder="last name" required/><br/>
+					<input type="text" class="form-control" name="fname" placeholder="first name" required/><br/>
+					<input type="text" class="form-control" name="mname" placeholder="middle name" required/><br/>
+				</div>
+				<div class="col-sm-4">
+						<input type="text" class="form-control" name="address" placeholder="address" required/><br/>
+						<input type="email" class="form-control" name="email" placeholder="email" required/><br/>
+						<input type="text" class="form-control" name="contact" placeholder="contact no." required/><br/>
+				</div>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" name="username" placeholder="username" required/></br>
+					<input type="password" class="form-control" name="password" placeholder="password" required/><br/>
+					<input type="password" class="form-control" name="confirm" placeholder="confirm password" required/><br/>
+					<input type="text" class="form-control" name="code" placeholder="project code" required/><br/>
+				</div>
+					<button type="submit" class="btn btn-info btn-sm pull-right">Submit</button>
+			</form>
+		</div>
+      </div>
+      <div class="modal-footer">
+      </br>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
 	$(document).ready(function() {

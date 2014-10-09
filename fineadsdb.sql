@@ -1,180 +1,155 @@
--- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.0.4
+-- http://www.phpmyadmin.net
 --
--- Host: localhost    Database: fineadsdb
--- ------------------------------------------------------
--- Server version	5.5.35-0ubuntu0.12.04.2
+-- Host: localhost
+-- Generation Time: Oct 09, 2014 at 05:46 AM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Database: `fineadsdb`
+--
+CREATE DATABASE IF NOT EXISTS `fineadsdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `fineadsdb`;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `admins`
 --
 
-DROP TABLE IF EXISTS `admins`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `admins` (
+CREATE TABLE IF NOT EXISTS `admins` (
   `admin_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`admin_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `admins`
 --
 
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,'admin','123');
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `admins` (`admin_id`, `username`, `password`) VALUES
+(1, 'admin', '123');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `messages`
 --
 
-DROP TABLE IF EXISTS `messages`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `messages` (
+CREATE TABLE IF NOT EXISTS `messages` (
   `message_id` int(11) NOT NULL AUTO_INCREMENT,
   `sender` int(11) DEFAULT NULL,
   `project` varchar(255) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `messages`
---
-
-LOCK TABLES `messages` WRITE;
-/*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `messages` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `portfolio`
 --
 
-DROP TABLE IF EXISTS `portfolio`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `portfolio` (
+CREATE TABLE IF NOT EXISTS `portfolio` (
   `image_id` int(11) NOT NULL AUTO_INCREMENT,
   `image_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`image_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `portfolio`
 --
 
-LOCK TABLES `portfolio` WRITE;
-/*!40000 ALTER TABLE `portfolio` DISABLE KEYS */;
-INSERT INTO `portfolio` VALUES (3,'animation.gif-phpVDmhjH'),(4,'frontview.JPG-phpZpftMy'),(5,'FineAdsPageOuter.png-phpTd0bHP');
-/*!40000 ALTER TABLE `portfolio` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `portfolio` (`image_id`, `image_name`) VALUES
+(3, 'animation.gif-phpVDmhjH'),
+(4, 'frontview.JPG-phpZpftMy'),
+(5, 'FineAdsPageOuter.png-phpTd0bHP');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `projects`
 --
 
-DROP TABLE IF EXISTS `projects`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `projects` (
+CREATE TABLE IF NOT EXISTS `projects` (
   `project_id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`project_id`),
   UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `projects`
 --
 
-LOCK TABLES `projects` WRITE;
-/*!40000 ALTER TABLE `projects` DISABLE KEYS */;
-INSERT INTO `projects` VALUES (1,'code');
-/*!40000 ALTER TABLE `projects` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `projects` (`project_id`, `code`) VALUES
+(1, 'code');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `projectuser`
 --
 
-DROP TABLE IF EXISTS `projectuser`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `projectuser` (
+CREATE TABLE IF NOT EXISTS `projectuser` (
   `projectuser_id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`projectuser_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `projectuser`
 --
 
-LOCK TABLES `projectuser` WRITE;
-/*!40000 ALTER TABLE `projectuser` DISABLE KEYS */;
-INSERT INTO `projectuser` VALUES (1,'code',1),(2,'code',2);
-/*!40000 ALTER TABLE `projectuser` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `projectuser` (`projectuser_id`, `code`, `user_id`) VALUES
+(1, 'code', 1),
+(2, 'code', 2);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `requests`
 --
 
-DROP TABLE IF EXISTS `requests`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `requests` (
-  `request_id` int(11) NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `requests` (
+  `request_id` int(11) NOT NULL AUTO_INCREMENT,
   `sender_name` varchar(255) DEFAULT NULL,
   `sender_email` varchar(255) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   `date_created` date DEFAULT NULL,
   `viewed` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`request_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  PRIMARY KEY (`request_id`),
+  KEY `request_id` (`request_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `requests`
 --
 
-LOCK TABLES `requests` WRITE;
-/*!40000 ALTER TABLE `requests` DISABLE KEYS */;
-INSERT INTO `requests` VALUES (0,'ABCD','billieang24@gmail.com','HAHAHA','2014-10-09',1);
-/*!40000 ALTER TABLE `requests` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `requests` (`request_id`, `sender_name`, `sender_email`, `content`, `date_created`, `viewed`) VALUES
+(1, 'adsad', 'asdasda@yahoo.com', 'asd', '2014-10-09', 1),
+(2, 'adsad', 'a@gmail.com', 'asdaw', '2014-10-09', 0);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -187,26 +162,16 @@ CREATE TABLE `users` (
   `isadmin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','123','sss','sss','sss','sss','sss@sss.com','1234',1),(2,'user','123','sss','sss','sss','sss','sss@sss.com','1234',0);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `users` (`user_id`, `username`, `password`, `lname`, `fname`, `mname`, `address`, `email`, `contactno`, `isadmin`) VALUES
+(1, 'admin', '123', 'sss', 'sss', 'sss', 'sss', 'sss@sss.com', '1234', 1),
+(2, 'user', '123', 'sss', 'sss', 'sss', 'sss', 'sss@sss.com', '1234', 0);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2014-10-09 12:03:46
