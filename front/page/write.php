@@ -24,15 +24,12 @@ class Front_Page_Write extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
-		// $msg = $_GET['msg'];
-		$file = 'data.txt';
-		$handle = fopen(dirname(__FILE__).'/data.txt', 'a');
-		fwrite($handle, "test");
+		$msg = $_GET['msg'];
+		$file = $_GET['code'];
+		$handle = fopen(dirname(__FILE__).'/'.$file.'.txt', 'a');
+		fwrite($handle, $msg);
 		fclose($handle);
-		if(file_exists()){
-			return "true";	
-		}
-		return "false";
+		exit;
 	}
 	
 	/* Protected Methods
