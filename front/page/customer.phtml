@@ -43,8 +43,9 @@
 </div>
 <script type="text/javascript">
 	var timestamp = null;
+	var ajax = null;
 	function comet() {
-		var ajax = $.ajax({
+		ajax = $.ajax({
 			type : 'Get',
 			url  : 'read?timestamp=' + timestamp,
 			async : true,
@@ -74,19 +75,18 @@
 				type: "POST",
 				url: "customer",
 				data: {code : "<?php echo $code; ?>", message : $(this).parent().children("textarea").val()}
-			});
-			var msg = $(this).val();
-			$.ajax({
-				type : 'GET',
-				url  : 'write',
-				async : true,
-				cache : false
-			}).success(function(data){
-				alert(data);
+			}).success(function(){
+				$.ajax({
+					type : 'GET',
+					url  : 'write',
+					async : true,
+					cache : false
+				}).success(function(data){
+					comet();
+				});
 			});
 			// $(".msg-box").append("<?php echo $user['username'].': ';?>"+$(this).parent().children("textarea").val()+"<br/>");
 			$(this).parent().children("textarea").val("");
-			comet();
 		});
 	});
 </script>
