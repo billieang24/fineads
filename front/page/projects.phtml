@@ -1,5 +1,6 @@
 <ul id="menu" class="nav nav­pills nav-justified nav-fixed">
 		<li data-menuanchor="home" class="active"><a href="#home"><img class="logo" src="images\logobnw1.png"/></a></li>
+   	 	<li><a href="projects">Projects</a></li>
 		<li><a href="gallery">Gallery</a></li>
 		<li><a href="customer">Messages</a></li>
 		<li><a href="billing">Billing</a></li>
@@ -9,71 +10,19 @@
 		<li></li>
 </ul>
 <div class="container">
-	<div class="container2">
+	<div class="container2 fc">
 		<div class="row">
 			<div class="col-xs-12 col-md-8">
 				<h2 class="pull-left" style="font-family:monospace;"> Welcome User!</h2>
 			</div>
 		</div>
 		<div class="row col-sm-11">
-				<center><h3>Messages</h3></center>
+				<center><h3>Projects</h3></center>
+					<button type="submit" class="btn btn-info btn-sm col-sm-2 pull-right">Add a project</button>
 				<div class="row">
-					<div class="col-sm-1 col-sm-offset-2">
-						<ul class="nav nav-pills nav-justified" style="background-color:#eeffee;">
-							<?php if (!empty($projects)){
-								foreach ($projects as $key => $project) {
-									echo '<li><a href="?code='.$project['code'].'">'.$project['code'].'</a></li>';
-								}
-							}
-							else {
-								echo '<li>You have no projects</li>';
-							} 
-							?>
-
-						</ul>
+					<div class="col-sm-4 proj-border">
+							
 					</div>
-					<div class="col-sm-5">
-					<?php if (!empty($projects)): ?>
-						<div class="msg-box">
-							<?php foreach($messages as $key => $message) {
-										echo $message['username'].': '.$message['content'].'<br/>';
-									}
-							?>
-						</div>
-						<div style="padding-top:10px;">
-							<textarea name="content" class=" form-control" rows="2" cols="15" style="font-size: 10pt; font-family: Arial;"></textarea></br>
-							<button class="send btn btn-warning">Send</button>
-						</div>
-					<?php endif; ?>
-					</div>
-						<div class="col-sm-4">
-								<h4>Choose a photo to upload</h4>
-								<div class="success alert alert-success alert-dismissible" role="alert">
-								  <button type="button" class="close" data-dismiss="alert">
-								  	<span aria-hidden="true">&times;</span>
-								  	<span class="sr-only">Close</span></button>
-								  <strong>Success!</strong> You've successfully uploaded an item!
-								</div>
-							<form method="POST" enctype="multipart/form-data">
-								<div class="image error alert alert-danger alert-dismissible" role="alert">
-								  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-								  <strong>Warning!</strong> Please choose a file to upload!
-								</div>
-								<div class="invalid-image error alert alert-danger alert-dismissible" role="alert">
-								  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-								  <strong>Warning!</strong>The file chosen is not an image
-								</div>
-								<img class="col-sm-offset-3 picture-inner" style="display: none;"/></br>
-								<div class=" col-sm-12">
-										<div class="col-sm-offset-3">
-												<div class=" col-sm-12">
-													<input type="file" name="file" class="btn-file"/></br>
-													<button class="pull-left btn btn-lg btn-danger col-sm-12 submit" style="margin-right:30px">Upload</button>
-												</div>
-										</div>
-								</div>
-							</form>
-						</div>
 				</div>
 			</div>
 		</div>

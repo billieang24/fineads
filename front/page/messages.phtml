@@ -39,9 +39,48 @@
 
 						</ul>
 					</div>
-					<div class="col-sm-6">
-						
+					<div class="col-sm-5">
+					<?php if (!empty($projects)): ?>
+						<div class="msg-box">
+							<?php foreach($messages as $key => $message) {
+										echo $message['username'].': '.$message['content'].'<br/>';
+									}
+							?>
+						</div>
+						<div style="padding-top:10px;">
+							<textarea name="content" class=" form-control" rows="2" cols="15" style="font-size: 10pt; font-family: Arial;"></textarea></br>
+							<button class="send btn btn-warning">Send</button>
+						</div>
+					<?php endif; ?>
 					</div>
+						<div class="col-sm-4">
+								<h4>Choose a photo to upload</h4>
+								<div class="success alert alert-success alert-dismissible" role="alert">
+								  <button type="button" class="close" data-dismiss="alert">
+								  	<span aria-hidden="true">&times;</span>
+								  	<span class="sr-only">Close</span></button>
+								  <strong>Success!</strong> You've successfully uploaded an item!
+								</div>
+							<form method="POST" enctype="multipart/form-data">
+								<div class="image error alert alert-danger alert-dismissible" role="alert">
+								  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								  <strong>Warning!</strong> Please choose a file to upload!
+								</div>
+								<div class="invalid-image error alert alert-danger alert-dismissible" role="alert">
+								  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								  <strong>Warning!</strong>The file chosen is not an image
+								</div>
+								<img class="col-sm-offset-3 picture-inner" style="display: none;"/></br>
+								<div class=" col-sm-12">
+										<div class="col-sm-offset-3">
+												<div class=" col-sm-12">
+													<input type="file" name="file" class="btn-file"/></br>
+													<button class="pull-left btn btn-lg btn-danger col-sm-12 submit" style="margin-right:30px">Upload</button>
+												</div>
+										</div>
+								</div>
+							</form>
+						</div>
 				</div>
 			</div>
 		</div>
@@ -85,6 +124,49 @@
 				cache : false
 			});
 			$(this).parent().children("textarea").val("");
+		});
+	});
+
+	jQuery(function($) {
+		$(".submit").on("click", function(e) {
+			e.preventDefault();
+			var error = false;
+			$(".error").hide();
+			if ($("input[type='file']")[0].files.length == 0) {
+				$(".image").show();
+				error = true;
+				// alert('hey');
+			}
+			if (!error) {
+				var fd = new FormData();
+				fd.append("image",$(this).parent().find("input[type='file']")[0].files[0]);
+				$(".success").show();
+				$(".picture-inner").hide();
+				$(this).replaceWith($(this).val("").clone(true));
+				$.ajax({
+					type: "POST",
+					url: "portfolio",
+					data: fd,
+		            processData: false,
+		            contentType: false
+				});
+			}
+		});
+		$("input[type='file']").on("change", function() {
+			$(".success").hide();
+			if ($(this)[0].files[0].type.search(/jpeg|png|gif/) == -1) {
+				$(".invalid-image").show();		
+				$(this).replaceWith($(this).val("").clone(true));
+				$(".picture-inner").hide();
+			}
+			else {
+				var reader = new FileReader();
+	            reader.onload = function (e) {
+	                $(".picture-inner").attr("src", e.target.result).css("display","inline");
+	            };
+	            reader.readAsDataURL($(this)[0].files[0]);
+				$(".invalid-image").hide();		
+			}
 		});
 	});
 </script>
