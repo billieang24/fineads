@@ -41,6 +41,30 @@ INSERT INTO `admins` VALUES (1,'admin','123');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gallery`
+--
+
+DROP TABLE IF EXISTS `gallery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gallery` (
+  `image_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image_name` varchar(255) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`image_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gallery`
+--
+
+LOCK TABLES `gallery` WRITE;
+/*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `messages`
 --
 
@@ -53,7 +77,7 @@ CREATE TABLE `messages` (
   `project` varchar(255) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +86,7 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES (45,2,'code','asd'),(46,1,'code','gago si banag'),(47,2,'code','asdasdas'),(48,1,'code','asdas'),(49,2,'code','sads'),(50,2,'code','haha'),(51,1,'codes','hey'),(52,2,'codes','hay'),(53,1,'code','a'),(54,2,'code','gago'),(55,1,'codes','tang ina nuo'),(56,2,'codes','tang ina nuo rin');
+INSERT INTO `messages` VALUES (45,2,'code','asd'),(46,1,'code','gago si banag'),(47,2,'code','asdasdas'),(48,1,'code','asdas'),(49,2,'code','sads'),(50,2,'code','haha'),(51,1,'codes','hey'),(52,2,'codes','hay'),(53,1,'code','a'),(54,2,'code','gago'),(55,1,'codes','tang ina nuo'),(56,2,'codes','tang ina nuo rin'),(57,1,'codes','gago'),(58,1,'codes','hfafasfasafsa\ndsad');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,9 +124,14 @@ DROP TABLE IF EXISTS `projects`;
 CREATE TABLE `projects` (
   `project_id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`project_id`),
-  UNIQUE KEY `code` (`code`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `type` varchar(255) DEFAULT NULL,
+  `height` int(11) DEFAULT NULL,
+  `width` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `face` varchar(255) DEFAULT NULL,
+  `project_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`project_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +140,7 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
-INSERT INTO `projects` VALUES (1,'code'),(2,'codes');
+INSERT INTO `projects` VALUES (1,'4TH86','Tarpaulin',1,1,0,'','test');
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +165,7 @@ CREATE TABLE `projectuser` (
 
 LOCK TABLES `projectuser` WRITE;
 /*!40000 ALTER TABLE `projectuser` DISABLE KEYS */;
-INSERT INTO `projectuser` VALUES (1,'code',1),(2,'code',2),(3,'codes',1),(4,'codes',2);
+INSERT INTO `projectuser` VALUES (1,'4TH86',1),(2,'4TH86',2);
 /*!40000 ALTER TABLE `projectuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,4 +239,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-09 15:24:56
+-- Dump completed on 2014-10-09 18:01:10
