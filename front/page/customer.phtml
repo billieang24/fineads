@@ -42,21 +42,16 @@
 	</div>
 </div>
 <script type="text/javascript">
-	var timestamp = null;
-	var ajax = null;
 	function comet() {
-		ajax = $.ajax({
-			type : 'Get',
-			url  : 'read?timestamp=' + timestamp,
+		$.ajax({
+			type : 'GET',
+			url  : 'read',
+			data: {code : "<?php echo $code; ?>"},
 			async : true,
 			cache : false,
 			success : function(data) {
-						var json = eval('(' + data + ')');
-						if(json['msg'] == ''){
-						}else { 
-							$(".msg-box").append(json['msg']);
-						}
-						timestamp  = json['timestamp'];
+						var json = eval("("+data+")");
+						$(".msg-box").html(json['msg']);
 						setTimeout('comet()', 1000);
 			},
 			error : function(XMLHttpRequest, textstatus, error) { 
@@ -70,22 +65,21 @@
 	});
 	jQuery(function($) {
 		$(".send").on("click", function() {
-			ajax.abort();
+			var msg ="<?php echo $user['username'].': ';?>"+$(this).parent().children("textarea").val()+"<br/>";
 			$.ajax({
 				type: "POST",
 				url: "customer",
 				data: {code : "<?php echo $code; ?>", message : $(this).parent().children("textarea").val()}
-			}).success(function(){
-				$.ajax({
-					type : 'GET',
-					url  : 'write',
-					async : true,
-					cache : false
-				}).success(function(data){
-					comet();
-				});
 			});
-			// $(".msg-box").append("<?php echo $user['username'].': ';?>"+$(this).parent().children("textarea").val()+"<br/>");
+			$.ajax({
+				type : 'GET',
+				url  : 'write',
+				data: {msg: msg
+					, code : "<?php echo $code; ?>"
+				},
+				async : true,
+				cache : false
+			});
 			$(this).parent().children("textarea").val("");
 		});
 	});

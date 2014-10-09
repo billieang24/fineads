@@ -15,7 +15,7 @@ class Front_Page_Read extends Front_Page {
 	-------------------------------*/
 	protected $_title = 'Fine Ads';
 	protected $_class = 'index';
-	protected $_template = '/read.phtml';
+	protected $_template = '/requests.phtml';
 	
 	/* Private Properties
 	-------------------------------*/
@@ -24,21 +24,15 @@ class Front_Page_Read extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
-		$filename = 'data.txt';
-		$last = isset($_GET['timestamp']) ? $_GET['timestamp'] : 0;
+		$file = $_GET['code'];
+		$filename = dirname(__FILE__).'/'.$file.'.txt';
+		$last = (isset($_GET['timestamp']) ? $_GET['timestamp'] : 0);
 		$current = filemtime($filename);
-
-		while( $current <= $last) {
-			usleep(100000);
-			clearstatcache();
-			$current = filemtime($filename);
-		}
-		
-		$response = array();
+		usleep(100000);
+		clearstatcache();
+		$response['code'] = $_GET['code'];
 		$response['msg'] = file_get_contents($filename);
-		$response['timestamp'] = $current;
-		echo json_encode($response);	
-		return $this->_page();
+		return json_encode($response);	
 	}
 	
 	/* Protected Methods
