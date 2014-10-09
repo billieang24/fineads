@@ -11,22 +11,30 @@
 	</div>
 	<div style="position:fixed;z-index:70;height:100%;width:20em;background-color:grey;margin-top:70px;">
 		<ul class="project">
-			<?php foreach ($projects as $key => $project)	{
+			<?php if (!empty($projects)){
+				foreach ($projects as $key => $project) {
 					echo '<li><a href="?code='.$project['code'].'">'.$project['code'].'</a></li>';
-				} 
+				}
+			}
+			else {
+				echo '<li>You have no projects</li>';
+			} 
 			?>
+
 		</ul>
 	</div>
-	<div class="msg-box col-sm-offset-3" style="position:fixed;height:30em;width:40em;background-color:grey;margin-top:8em;border-radius:10px;">
-		<?php foreach($messages as $key => $message) {
-					echo $message['username'].': '.$message['content'].'<br/>';
-				}
-		?>
-	</div>
-	<div class="col-sm-offset-3" style="position:fixed;height:80px;width:40em;background-color:grey;margin-top:41em;border-radius:10px;">
-		<textarea></textarea>
-		<button class="send">Send</button>
-	</div>
+	<?php if (!empty($projects)): ?>
+		<div class="msg-box col-sm-offset-3" style="position:fixed;height:30em;width:40em;background-color:grey;margin-top:8em;border-radius:10px;">
+			<?php foreach($messages as $key => $message) {
+						echo $message['username'].': '.$message['content'].'<br/>';
+					}
+			?>
+		</div>
+		<div class="col-sm-offset-3" style="position:fixed;height:80px;width:40em;background-color:grey;margin-top:41em;border-radius:10px;">
+			<textarea></textarea>
+			<button class="send">Send</button>
+		</div>
+	<?php endif; ?>
 	<div class="col-sm-offset-9" style="position:fixed;height:39em;width:20em;background-color:#fff;margin-top:8em;border-radius:10px;">
 		<div style="height:30em;width:20;background-color:grey;border-radius:10px">
 		</div>
@@ -34,15 +42,51 @@
 	</div>
 </div>
 <script type="text/javascript">
+	var timestamp = null;
+	function comet() {
+		var ajax = $.ajax({
+			type : 'Get',
+			url  : 'read?timestamp=' + timestamp,
+			async : true,
+			cache : false,
+			success : function(data) {
+						var json = eval('(' + data + ')');
+						if(json['msg'] == ''){
+						}else { 
+							$(".msg-box").append(json['msg']);
+						}
+						timestamp  = json['timestamp'];
+						setTimeout('comet()', 1000);
+			},
+			error : function(XMLHttpRequest, textstatus, error) { 
+						alert(error);
+						setTimeout('comet()', 15000);
+			}		
+		});
+	}
+	$(function() {
+		comet();
+	});
 	jQuery(function($) {
 		$(".send").on("click", function() {
+			ajax.abort();
 			$.ajax({
 				type: "POST",
 				url: "customer",
 				data: {code : "<?php echo $code; ?>", message : $(this).parent().children("textarea").val()}
 			});
-			$(".msg-box").append("<?php echo $user['username'].': ';?>"+$(this).parent().children("textarea").val()+"<br/>");
+			var msg = $(this).val();
+			$.ajax({
+				type : 'GET',
+				url  : 'write',
+				async : true,
+				cache : false
+			}).success(function(data){
+				alert(data);
+			});
+			// $(".msg-box").append("<?php echo $user['username'].': ';?>"+$(this).parent().children("textarea").val()+"<br/>");
 			$(this).parent().children("textarea").val("");
+			comet();
 		});
 	});
 </script>

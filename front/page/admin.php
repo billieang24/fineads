@@ -33,7 +33,6 @@ class Front_Page_Admin extends Front_Page {
 		}
 		if (isset($_POST['setviewed'])) {
 			front()->requests()->setViewed();
-			return 'true';
 		}
 		// $test = front()->trigger('mail',1,2,3);
 		$hour = date('h') * rand(1,3);
@@ -60,7 +59,6 @@ class Front_Page_Admin extends Front_Page {
 		}
 		$unviewed = front()->requests()->getUnviewed();
 		$this->_body = array(
-			'test'		=>	implode("",$code),
 			'unviewed'	=>	$unviewed);
 		return $this->_page();
 	}

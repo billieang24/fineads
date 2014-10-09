@@ -31,8 +31,8 @@ class Front_Page_Index extends Front_Page {
 			front()->requests()->create($_POST['name'],$_POST['email'],$_POST['content']);
 		}
 		if (isset($_POST['username'])) {
-			if(front()->users()->getDetail($_POST['username'],$_POST['password'])) {
-				$user = front()->users()->getDetail($_POST['username'],$_POST['password']);
+			if(front()->users()->getDetail($_POST['username'],$_POST['password'],0)) {
+				$user = front()->users()->getDetail($_POST['username'],$_POST['password'],0);
 				$_SESSION['customer'] = $user['user_id'];
 				header('Location: customer');
 			}	

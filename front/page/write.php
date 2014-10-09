@@ -6,7 +6,7 @@
 /**
  * Default logic to output a page
  */
-class Front_Page_Login extends Front_Page {
+class Front_Page_Write extends Front_Page {
 	/* Constants
 	-------------------------------*/
 	/* Public Properties
@@ -15,7 +15,7 @@ class Front_Page_Login extends Front_Page {
 	-------------------------------*/
 	protected $_title = 'Fine Ads';
 	protected $_class = 'index';
-	protected $_template = '/login.phtml';
+	protected $_template = '/write.phtml';
 	
 	/* Private Properties
 	-------------------------------*/
@@ -24,20 +24,15 @@ class Front_Page_Login extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
-		if (isset($_SESSION['admin'])) {
-			header('Location: admin');
+		// $msg = $_GET['msg'];
+		$file = 'data.txt';
+		$handle = fopen(dirname(__FILE__).'/data.txt', 'a');
+		fwrite($handle, "test");
+		fclose($handle);
+		if(file_exists()){
+			return "true";	
 		}
-		if (isset($_POST['username'])) {
-			$user = front()->users()->getDetail($_POST['username'], $_POST['password'], 1);
-			if (!empty($user)) {
-				$_SESSION['admin'] = $user['user_id'];
-				header('Location: admin');
-			}
-			else {
-				$this->_body['invalid'] = true;
-			}
-		}
-		return $this->_page();
+		return "false";
 	}
 	
 	/* Protected Methods

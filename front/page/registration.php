@@ -37,8 +37,9 @@ class Front_Page_Registration extends Front_Page {
 					$_POST['mname'],
 					$_POST['address'],
 					$_POST['email'],
-					$_POST['contact']);
-				$user = front()->users()->getDetail($_POST['username'],$_POST['password']);
+					$_POST['contact'],
+					0);
+				$user = front()->users()->getDetail($_POST['username'],$_POST['password'],0);
 				front()->projectuser()->create($_POST['code'], $user['user_id']);
 				$_SESSION['customer'] = $user['user_id'];
 				header('Location: customer');

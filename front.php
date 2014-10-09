@@ -379,10 +379,6 @@ class Front extends Eden {
 	public function requests() {
 		return new Requests($this->database());
 	}	
-	
-	public function admins() {
-		return new Admins($this->database());
-	}	
 
 	public function users() {
 		return new Users($this->database());

@@ -31,6 +31,7 @@ class Front_Page_Requests extends Front_Page {
 			session_destroy();
 			header('Location: login');
 		}
+		front()->requests()->setViewed();
 		$requests = front()->requests()->getList();
 		$this->_body = array(
 			'requests'	=>	$requests);
