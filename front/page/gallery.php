@@ -24,6 +24,13 @@ class Front_Page_Gallery extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
+			if (!isset($_SESSION['customer'])) {
+			header('Location: /');
+		}
+		if (isset($_GET['logout'])) {
+			session_destroy();
+			header('Location: /');
+		}
 		$portfolio = front()->portfolio()->getList();
 		$this->_body = array(
 			'portfolio' => $portfolio);
