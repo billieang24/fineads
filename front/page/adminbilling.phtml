@@ -1,17 +1,31 @@
-<div>
-	<div class="clearfix" style="position:fixed;z-index:70;height:70px;width:100%;background-color:black;">
-		<h1 class="pull-left header-name">Hi Admin</h1>
-	
-	</div>
-	<div style="position:fixed;z-index:70;height:100%;width:20em;background-color:grey;margin-top:70px">
-		<ul class="project">
-			<li><a href="#" style="text-decoration:none;color:black">List of Projects</a></li>
-			<li><a href="#" style="text-decoration:none;color:black">Messages</a></lu>
-			<li><a href="a" style="text-decoration:none;color:black">Request Notif</a></li>
-			<li><a href="#" style="text-decoration:none; color:black">Add Project</a></li>
-		</ul>
-	</div>
-	<div class="col-sm-offset-3" style="position:fixed;height:40em;width:60em;background-color:grey;margin-top:6em;border-radius:10px;">
+<div class="nav-fixed-horizontal fc">
+	<center>
+		<a href="admin" role="button" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-arrow-left"></span> Back</a></br></br>
+		<a href="?logout=1" role="button" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-off"></span>Log Out</a></br>
+	</center>
+</br>
+	<ul class="nav nav-pills">
+		<li><a href="branch">List of Projects</a></li>
+		<li><a href="messages">Messages</a></li>
+		<li class="notif" style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
+			<a href="requests">Request Notifications</a>
+		</li>
+		<li><a href="addproject">Add Projects</a></li>
+		<li><a href="admingal">Gallery</a></li>
+		<li><a href="portfolio">Portfolio</a></li>
+	</ul>
+</div>
+<div class="container col-sm-offset-2">
+	<div class="container2">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+				<h2 class="pull-left" style="font-family:monospace;"> Welcome Admin!</h2>
+			</div>
+		</div>
+		<div class="row col-sm-10 col-sm-offset-1">
+				<h2>Projects</h2>
+				<div class="row">
+						<div class="col-sm-offset-3" style="position:fixed;height:40em;width:60em;background-color:grey;margin-top:6em;border-radius:10px;">
 		<h1 class="header-code"><strong>Code:</strong></h1>
 		<div style="position:fixed;height:10em;width:60em;background-color:grey">
 			<h1 class="header-project2"><strong>Project Name</strong></h1>
@@ -64,9 +78,11 @@
 			<button class="button"><strong>Message</strong></button>
 			<button class="button"><strong>Gallery</strong></button>
 		</div>
-
-	
 	</div>
-
-
 </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	

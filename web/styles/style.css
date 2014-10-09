@@ -179,3 +179,7 @@
 	margin-left: 10em;
 	margin-top: 2em;
 }
+.panel-body{
+	height: 400px;
+	overflow-y:scroll;
+}

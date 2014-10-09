@@ -1,20 +1,37 @@
-<div class="container2">
-	<div class="row">
-		<div class="col-xs-12 col-md-8">
-			<h4 class="pull-left"> Hi Admin!</h4>
-			<a href="/admin?logout=1" role="button" class="btn btn-info btn-sm pull-right"><span class="glyphicon glyphicon-off"></span> Log Out</a> 
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-7">
-			<div class="success alert alert-success alert-dismissible" role="alert">
-			  <button type="button" class="close" data-dismiss="alert">
-			  	<span aria-hidden="true">&times;</span>
-			  	<span class="sr-only">Close</span></button>
-			  <strong>Success!</strong> You've successfully addedd an item!
+<div class="nav-fixed-horizontal fc">
+	<center>
+		<a href="admin" role="button" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-arrow-left"></span> Back</a></br></br>
+		<a href="?logout=1" role="button" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-off"></span>Log Out</a></br>
+	</center>
+</br>
+	<ul class="nav nav-pills">
+		<li><a href="branch">List of Projects</a></li>
+		<li><a href="messages">Messages</a></li>
+		<li class="notif" style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
+			<a href="requests">Request Notifications</a>
+		</li>
+		<li><a href="addproject">Add Projects</a></li>
+		<li><a href="admingal">Gallery</a></li>
+		<li><a href="portfolio">Portfolio</a></li>
+	</ul>
+</div>
+<div class="container col-sm-offset-2">
+	<div class="container2">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+				<h2 class="pull-left" style="font-family:monospace;"> Welcome Admin!</h2>
 			</div>
+		</div>
+		<div class="row col-sm-9 col-sm-offset-2">
+				<h2>Add image in Portfolio</h2>
+				<div class=" col-sm-8 ">
+					<div class="success alert alert-success alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert">
+					  	<span aria-hidden="true">&times;</span>
+					  	<span class="sr-only">Close</span></button>
+					  <strong>Success!</strong> You've successfully addedd an item!
+					</div>
 				<form method="POST" enctype="multipart/form-data">
-					<h5>Add Image in Portfolio</h5></br>
 					<div class="image error alert alert-danger alert-dismissible" role="alert">
 					  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 					  <strong>Warning!</strong> Please choose a file to upload!
@@ -24,14 +41,22 @@
 					  <strong>Warning!</strong>The file chosen is not an image
 					</div>
 					<img class="picture-inner" style="display: none;"/></br>
-					<input type="file" name="file" class="btn-file"/></br>
-				<button class="btn-success btn submit" type="submit">
-					<span class="glyphicon glyphicon-send"></span> Submit
-				</button>
-			</form>
+					<div class=" col-sm-12">
+							<div class="col-sm-offset-3">
+									<div class=" col-sm-12">
+										<h3>Choose a photo to upload</h3>
+										<input type="file" name="file" class="btn-file"/>
+										<h4>Description</h4>
+										<input type="text" class="form-control" name="adminGalDesc"/></br>
+										<button class="pull-left btn btn-lg btn-danger col-sm-12 submit" style="margin-right:30px">Upload</button>
+									</div>
+							</div>
+					</div>
+				</form>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 <script type="text/javascript">
 	jQuery(function($) {
 		$(".submit").on("click", function(e) {
@@ -41,7 +66,7 @@
 			if ($("input[type='file']")[0].files.length == 0) {
 				$(".image").show();
 				error = true;
-				alert('hey');
+				// alert('hey');
 			}
 			if (!error) {
 				var fd = new FormData();

@@ -1,15 +1,17 @@
 <div class="nav-fixed-horizontal fc">
 	<center>
-		<a href="admin" role="button" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-arrow-left"></span>Back</a></br></br>
+		<a href="admin" role="button" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-arrow-left"></span> Back</a></br></br>
 		<a href="?logout=1" role="button" class="btn btn-info btn-sm "><span class="glyphicon glyphicon-off"></span>Log Out</a></br>
 	</center>
 </br>
 	<ul class="nav nav-pills">
+		<li><a href="branch">List of Projects</a></li>
 		<li><a href="messages">Messages</a></li>
 		<li class="notif" style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
 			<a href="requests">Request Notifications</a>
 		</li>
 		<li><a href="addproject">Add Projects</a></li>
+		<li><a href="portfolio">Portfolio</a></li>
 	</ul>
 </div>
 <div class="container col-sm-offset-2">
