@@ -1,58 +1,33 @@
-<div style="position:fixed;z-index:70;height:100%;width:20%;background-color:black;">
-<a href="?logout=1">LOG OUT</a>
-<ul>
-	<liname="0">List
-		<ul>
-			<li name="1">
-				Branch
-				<ul>
-					<li name="3">
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-				</ul>
-			</li>
-			<li name="2">
-				Branch
-				<ul>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-				</ul>
-			</li>
-			<li>
-				Branch
-				<ul>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-					<li>
-						Project
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-</ul>
-Messages
-<div class="notif" style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
-	<a href="requests">Request Notification</a>
-</div>
-Add Project
+<div class="nav-fixed-horizontal fc">
+	<center>
+		<a href="?logout=1" role="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-off"></span>Log Out</a></br>
+	</center>
+	<h4>List</h4>
+	<div class="list-box">
+			<ul>
+				<li>
+					Branch
+					<ul>
+						<li name="3">
+							Project
+						</li>
+						<li>
+							Project
+						</li>
+						<li>
+							Project
+						</li>
+					</ul>
+				</li>
+			</ul>
+	</div>
+	<ul class="nav nav-pills">
+		<li><a href="messages">Messages</a></li>
+		<li class="notif" style="background-color:<?php echo isset($unviewed)?'red':'transparent';?>">
+			<a href="requests">Request Notifications</a>
+		</li>
+		<li><a href="addproject">Add Projects</a></li>
+	</ul>
 </div>
 <div style="background-color:cyan;">
 
