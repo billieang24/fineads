@@ -24,7 +24,7 @@ class Front_Page_Gallery extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
-			if (!isset($_SESSION['customer'])) {
+		if (!isset($_SESSION['customer'])) {
 			header('Location: /');
 		}
 		if (isset($_GET['logout'])) {

@@ -11,6 +11,7 @@
 			<a href="requests">Request Notifications</a>
 		</li>
 		<li><a href="addproject">Add Projects</a></li>
+		<li><a href="admingal">Gallery</a></li>
 		<li><a href="portfolio">Portfolio</a></li>
 	</ul>
 </div>
@@ -42,6 +43,16 @@
 					    </div>
 					  </div>
 					 </div>
+					 <form method="POST">
+						 <b>Choose project:</b>
+						 <select name="project">
+						 	<?php foreach ($projects as $key => $project): ?>
+						 		<option value="<?php echo $project['code'];?>"><?php echo $project['code'];?></option>
+						 	<?php endforeach; ?>
+						 </select>
+						 <input name="email" type="hidden" value="<?php echo $request['sender_email']; ?>"/>
+						 <button class="btn btn-default">Send Code</button>
+					 </form>
 				<?php endforeach ?>
 			</div>
 		</div>

@@ -6,7 +6,7 @@
 /**
  * Default logic to output a page
  */
-class Front_Page_branch extends Front_Page {
+class Front_Page_Branch extends Front_Page {
 	/* Constants
 	-------------------------------*/
 	/* Public Properties
@@ -24,6 +24,13 @@ class Front_Page_branch extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
+		if (!isset($_SESSION['admin'])) {
+			header('Location: login');
+		}
+		if (isset($_GET['logout'])){
+			session_destroy();
+			header('Location: login');
+		}
 		return $this->_page();
 	}
 	

@@ -24,6 +24,13 @@ class Front_Page_Addproject extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
+		if (!isset($_SESSION['admin'])) {
+			header('Location: login');
+		}
+		if (isset($_GET['logout'])){
+			session_destroy();
+			header('Location: login');
+		}
 		if(isset($_POST['name'])) {
 			$hour = date('h') * rand(1,3);
 			$month = date('m') * rand(1,5);

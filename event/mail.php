@@ -11,8 +11,8 @@ class Event_Mail {
 			'jestine123', 
 			465, true)
 			->setSubject('Registration Code')
-			->setBody('<p>test</p>', true)
-			->setBody('test')
+			->setBody('<p>'.'$code'.'</p>', true)
+			->setBody('$code')
 			->addTo('billieang24@gmail.com')
 			->send()
 			->disconnect(); 

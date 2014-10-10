@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="row col-sm-9 col-sm-offset-2">
-				<h2>Add image in Portfolio</h2>
+				<h2>Add image to Portfolio</h2>
 				<div class=" col-sm-8 ">
 					<div class="success alert alert-success alert-dismissible" role="alert">
 					  <button type="button" class="close" data-dismiss="alert">
@@ -46,8 +46,6 @@
 									<div class=" col-sm-12">
 										<h3>Choose a photo to upload</h3>
 										<input type="file" name="file" class="btn-file"/>
-										<h4>Description</h4>
-										<input type="text" class="form-control" name="adminGalDesc"/></br>
 										<button class="pull-left btn btn-lg btn-danger col-sm-12 submit" style="margin-right:30px">Upload</button>
 									</div>
 							</div>
@@ -58,46 +56,50 @@
 		</div>
 	</div>
 <script type="text/javascript">
-	jQuery(function($) {
-		$(".submit").on("click", function(e) {
-			e.preventDefault();
-			var error = false;
-			$(".error").hide();
-			if ($("input[type='file']")[0].files.length == 0) {
-				$(".image").show();
-				error = true;
-				// alert('hey');
-			}
-			if (!error) {
-				var fd = new FormData();
-				fd.append("image",$(this).parent().find("input[type='file']")[0].files[0]);
-				$(".success").show();
-				$(".picture-inner").hide();
-				$(this).replaceWith($(this).val("").clone(true));
-				$.ajax({
-					type: "POST",
-					url: "portfolio",
-					data: fd,
-		            processData: false,
-		            contentType: false
-				});
-			}
-		});
-		$("input[type='file']").on("change", function() {
-			$(".success").hide();
-			if ($(this)[0].files[0].type.search(/jpeg|png|gif/) == -1) {
-				$(".invalid-image").show();		
-				$(this).replaceWith($(this).val("").clone(true));
-				$(".picture-inner").hide();
-			}
-			else {
-				var reader = new FileReader();
-	            reader.onload = function (e) {
-	                $(".picture-inner").attr("src", e.target.result).css("display","inline");
-	            };
-	            reader.readAsDataURL($(this)[0].files[0]);
-				$(".invalid-image").hide();		
-			}
-		});
+	$(".submit").on("click", function(e) {
+		e.preventDefault();
+		var error = false;
+		$(".error").hide();
+		if ($("input[type='file']")[0].files.length == 0) {
+			$(".image").show();
+			error = true;
+		}
+		if ($("input[name='description']").val().trim() == "") {
+			$(".description").show();
+			error = true;
+		}
+		if (!error) {
+			var fd = new FormData();
+			fd.append("image",$(this).parent().find("input[type='file']")[0].files[0]);
+			fd.append("description",$(this).parent().find("input[name='description']").val());
+			$(".success").show();
+			$(".picture-inner").hide();
+			$(this).parent().trigger("reset");
+			$(this).replaceWith($(this).val("").clone(true));
+			$.ajax({
+				type: "POST",
+				url: "admingal",
+				data: fd,
+	            processData: false,
+	            contentType: false
+			});
+		}
+	});
+	$("input[type='file']").on("change", function() {
+		$(".image").hide();		
+		$(".invalid-image").hide();		
+		$(".success").hide();
+		$(".picture-inner").hide();
+		if ($(this)[0].files[0].type.search(/jpeg|png|gif/) == -1) {
+			$(".invalid-image").show();		
+			$(this).replaceWith($(this).val("").clone(true));
+		}
+		else {
+			var reader = new FileReader();
+            reader.onload = function (e) {
+                $(".picture-inner").attr("src", e.target.result).css("display","inline");
+            };
+            reader.readAsDataURL($(this)[0].files[0]);
+		}
 	});
 </script>

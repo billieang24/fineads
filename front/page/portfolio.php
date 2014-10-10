@@ -24,8 +24,12 @@ class Front_Page_Portfolio extends Front_Page {
 	/* Public Methods
 	-------------------------------*/
 	public function render() {
-		if (!isset($_SESSION['admin'])){
-			header('Location:/login');
+		if (!isset($_SESSION['admin'])) {
+			header('Location: login');
+		}
+		if (isset($_GET['logout'])) {
+			session_destroy();
+			header('Location: login');
 		}
 		if (isset($_FILES['image'])){
 			move_uploaded_file(

@@ -34,7 +34,6 @@ class Front_Page_Admin extends Front_Page {
 		if (isset($_POST['setviewed'])) {
 			front()->requests()->setViewed();
 		}
-		// $test = front()->trigger('mail',1,2,3);
 		$unviewed = front()->requests()->getUnviewed();
 		$this->_body = array(
 			'unviewed'	=>	$unviewed);

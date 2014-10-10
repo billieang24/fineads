@@ -6,7 +6,7 @@
 /**
  * Default logic to output a page
  */
-class Front_Page_adminbilling extends Front_Page {
+class Front_Page_Adminbilling extends Front_Page {
 	/* Constants
 	-------------------------------*/
 	/* Public Properties

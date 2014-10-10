@@ -53,11 +53,12 @@
 									</div>
 									<h4>Description</h4>
 									<input type="text" class="form-control" name="description"/></br>
-										<select name="project">
-											<?php foreach ($codes as $key => $code): ?>
-												<option value="<?php echo $code['code'];?>"><?php echo $code['code'];?></option>
-											<?php endforeach; ?>
-										</select>
+									<h3>Project: </h3>
+									<select class="form-control" name="project">
+										<?php foreach ($codes as $key => $code): ?>
+											<option value="<?php echo $code['code'];?>"><?php echo $code['code'];?></option>
+										<?php endforeach; ?>
+									</select>
 									<button type="submit" class="pull-left btn btn-lg btn-danger col-sm-12 submit" style="margin-right:30px">Upload</button>
 								</div>
 							</div>

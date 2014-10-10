@@ -25,8 +25,6 @@ class Front_Page_Index extends Front_Page {
 	-------------------------------*/
 	public function render() {
 		$portfolio = front()->portfolio()->getList();
-		// $this->_body = array(
-		// 	);
 		if (isset($_POST['name'])) {
 			front()->requests()->create($_POST['name'],$_POST['email'],$_POST['content']);
 		}

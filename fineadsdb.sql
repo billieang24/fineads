@@ -77,7 +77,7 @@ CREATE TABLE `messages` (
   `project` varchar(255) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`message_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,6 @@ CREATE TABLE `messages` (
 
 LOCK TABLES `messages` WRITE;
 /*!40000 ALTER TABLE `messages` DISABLE KEYS */;
-INSERT INTO `messages` VALUES (45,2,'code','asd'),(46,1,'code','gago si banag'),(47,2,'code','asdasdas'),(48,1,'code','asdas'),(49,2,'code','sads'),(50,2,'code','haha'),(51,1,'codes','hey'),(52,2,'codes','hay'),(53,1,'code','a'),(54,2,'code','gago'),(55,1,'codes','tang ina nuo'),(56,2,'codes','tang ina nuo rin'),(57,1,'codes','gago'),(58,1,'codes','hfafasfasafsa\ndsad');
 /*!40000 ALTER TABLE `messages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +100,7 @@ CREATE TABLE `portfolio` (
   `image_id` int(11) NOT NULL AUTO_INCREMENT,
   `image_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`image_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +109,6 @@ CREATE TABLE `portfolio` (
 
 LOCK TABLES `portfolio` WRITE;
 /*!40000 ALTER TABLE `portfolio` DISABLE KEYS */;
-INSERT INTO `portfolio` VALUES (3,'animation.gif-phpVDmhjH'),(4,'frontview.JPG-phpZpftMy'),(5,'FineAdsPageOuter.png-phpTd0bHP');
 /*!40000 ALTER TABLE `portfolio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +154,7 @@ CREATE TABLE `projectuser` (
   `code` varchar(255) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`projectuser_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -177,14 +175,14 @@ DROP TABLE IF EXISTS `requests`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `requests` (
-  `request_id` int(11) NOT NULL DEFAULT '0',
+  `request_id` int(11) NOT NULL AUTO_INCREMENT,
   `sender_name` varchar(255) DEFAULT NULL,
   `sender_email` varchar(255) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
   `date_created` date DEFAULT NULL,
   `viewed` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`request_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +191,7 @@ CREATE TABLE `requests` (
 
 LOCK TABLES `requests` WRITE;
 /*!40000 ALTER TABLE `requests` DISABLE KEYS */;
-INSERT INTO `requests` VALUES (0,'ABCD','billieang24@gmail.com','HAHAHA','2014-10-09',1);
+INSERT INTO `requests` VALUES (1,'ABCD','billieang24@gmail.com','HAHAHA','2014-10-09',1),(2,'billie','billieang24@gmail.com','test request','2014-10-10',1);
 /*!40000 ALTER TABLE `requests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,4 +237,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-10-09 18:01:10
+-- Dump completed on 2014-10-10 11:28:31
