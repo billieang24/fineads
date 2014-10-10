@@ -31,7 +31,6 @@
 					  	<span class="sr-only">Close</span></button>
 					  <strong>Success!</strong> You've successfully addedd an item!
 					</div>
-				<form method="POST" enctype="multipart/form-data">
 					<div class="image error alert alert-danger alert-dismissible" role="alert">
 					  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 					  <strong>Warning!</strong> Please choose a file to upload!
@@ -45,12 +44,13 @@
 							<div class="col-sm-offset-3">
 									<div class=" col-sm-12">
 										<h3>Choose a photo to upload</h3>
-										<input type="file" name="file" class="btn-file"/>
-										<button class="pull-left btn btn-lg btn-danger col-sm-12 submit" style="margin-right:30px">Upload</button>
+											<form method="POST" enctype="multipart/form-data">
+											<input type="file" name="file" class="btn-file"/>
+											<button class="pull-left btn btn-lg btn-danger col-sm-12 submit" style="margin-right:30px" type="submit">Upload</button>
+										</form>
 									</div>
 							</div>
 					</div>
-				</form>
 				</div>
 			</div>
 		</div>
@@ -64,10 +64,6 @@
 			$(".image").show();
 			error = true;
 		}
-		if ($("input[name='description']").val().trim() == "") {
-			$(".description").show();
-			error = true;
-		}
 		if (!error) {
 			var fd = new FormData();
 			fd.append("image",$(this).parent().find("input[type='file']")[0].files[0]);
@@ -78,7 +74,7 @@
 			$(this).replaceWith($(this).val("").clone(true));
 			$.ajax({
 				type: "POST",
-				url: "admingal",
+				url: "portfolio",
 				data: fd,
 	            processData: false,
 	            contentType: false
